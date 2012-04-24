@@ -1,6 +1,6 @@
 package EngSeqBuilder;
 {
-  $EngSeqBuilder::VERSION = '0.001';
+  $EngSeqBuilder::VERSION = '0.002';
 }
 
 use Moose;

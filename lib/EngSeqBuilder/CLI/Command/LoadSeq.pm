@@ -1,6 +1,6 @@
 package EngSeqBuilder::CLI::Command::LoadSeq;
 {
-  $EngSeqBuilder::CLI::Command::LoadSeq::VERSION = '0.001';
+  $EngSeqBuilder::CLI::Command::LoadSeq::VERSION = '0.002';
 }
 
 use Moose;

@@ -1,6 +1,6 @@
 package EngSeqBuilder::CLI::Command::LoadBackbone;
 {
-  $EngSeqBuilder::CLI::Command::LoadBackbone::VERSION = '0.001';
+  $EngSeqBuilder::CLI::Command::LoadBackbone::VERSION = '0.002';
 }
 
 use Moose;

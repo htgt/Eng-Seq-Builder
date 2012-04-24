@@ -1,6 +1,6 @@
 package EngSeqBuilder::CLI::Command::AddFeature;
 {
-  $EngSeqBuilder::CLI::Command::AddFeature::VERSION = '0.001';
+  $EngSeqBuilder::CLI::Command::AddFeature::VERSION = '0.002';
 }
 
 use Moose;

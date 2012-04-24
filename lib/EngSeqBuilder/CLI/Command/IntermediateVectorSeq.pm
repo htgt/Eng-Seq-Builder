@@ -1,6 +1,6 @@
 package EngSeqBuilder::CLI::Command::IntermediateVectorSeq;
 {
-  $EngSeqBuilder::CLI::Command::IntermediateVectorSeq::VERSION = '0.001';
+  $EngSeqBuilder::CLI::Command::IntermediateVectorSeq::VERSION = '0.002';
 }
 
 use Moose;

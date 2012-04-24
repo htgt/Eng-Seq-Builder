@@ -1,6 +1,6 @@
 package EngSeqBuilder::CLI::Command::CreateCompoundSeq;
 {
-  $EngSeqBuilder::CLI::Command::CreateCompoundSeq::VERSION = '0.001';
+  $EngSeqBuilder::CLI::Command::CreateCompoundSeq::VERSION = '0.002';
 }
 
 use Moose;

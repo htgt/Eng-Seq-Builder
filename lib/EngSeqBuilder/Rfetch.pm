@@ -1,6 +1,6 @@
 package EngSeqBuilder::Rfetch;
 {
-  $EngSeqBuilder::Rfetch::VERSION = '0.001';
+  $EngSeqBuilder::Rfetch::VERSION = '0.002';
 }
 
 use Moose::Role;
