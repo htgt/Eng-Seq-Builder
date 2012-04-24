@@ -1,6 +1,6 @@
 package EngSeqBuilder::Rfetch::EnsEMBL;
 {
-  $EngSeqBuilder::Rfetch::EnsEMBL::VERSION = '0.002';
+  $EngSeqBuilder::Rfetch::EnsEMBL::VERSION = '0.003';
 }
 
 use Moose;

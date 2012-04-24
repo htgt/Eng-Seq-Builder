@@ -1,6 +1,6 @@
 package EngSeqBuilder::Exception;
 {
-  $EngSeqBuilder::Exception::VERSION = '0.002';
+  $EngSeqBuilder::Exception::VERSION = '0.003';
 }
 
 use Moose;

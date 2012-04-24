@@ -1,0 +1,8 @@
+LOCUS       B1_Gateway                25 bp    dna     linear   UNK 
+ACCESSION   unknown
+FEATURES             Location/Qualifiers
+     misc_feature    1..25
+                     /note="B1 gateway site"
+ORIGIN      
+        1 acaagtttgt acaaaaaagc aggct
+//

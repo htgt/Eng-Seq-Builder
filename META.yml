@@ -4,10 +4,11 @@ author:
   - 'Ray Miller, Sajith Perera'
 build_requires:
   Class::Data::Inheritable: 0
+  File::Find: 0
   File::Temp: 0
-  FindBin: 0
   IO::String: 0
   Test::Class: 0
+  Test::More: 0.88
   Test::Most: 0
   YAML: 0
   base: 0
@@ -36,7 +37,11 @@ requires:
   Const::Fast: 0
   DBIx::Class::Core: 0
   DBIx::Class::Schema: 0
+  DBIx::Class::Schema::Loader: 0
   Data::Dump: 0
+  File::Spec: 0
+  FindBin: 0
+  Getopt::Long: 0
   Hash::MoreUtils: 0
   List::MoreUtils: 0
   List::Util: 0
@@ -53,7 +58,9 @@ requires:
   MooseX::Types: 0
   MooseX::Types::Moose: 0
   MooseX::Types::Path::Class: 0
+  Pod::Usage: 0
   Sub::Exporter: 0
+  Term::ReadPassword: 0
   Text::Table: 0
   Throwable::Error: 0
   Try::Tiny: 0
@@ -61,4 +68,4 @@ requires:
   namespace::autoclean: 0
   strict: 0
   warnings: 0
-version: 0.002
+version: 0.003

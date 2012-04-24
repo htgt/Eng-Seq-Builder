@@ -1,0 +1,11 @@
+LOCUS       Gateway_R2               125 bp    dna     linear   UNK 
+ACCESSION   unknown
+FEATURES             Location/Qualifiers
+     misc_feature    1..125
+                     /note="R2 gateway site"
+BASE COUNT       32 a     14 c     20 g     59 t
+ORIGIN      
+        1 catagtgact ggatatgttg tgttttacag tattatgtag tctgtttttt atgcaaaatc
+       61 taatttaata tattgatatt tatatcattt tacgtttctc gttcagcttt cttgtacaaa
+      121 gtggt
+//

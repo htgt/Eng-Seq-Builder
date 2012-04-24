@@ -13,10 +13,11 @@ my %WriteMakefileArgs = (
   "AUTHOR" => "Ray Miller, Sajith Perera",
   "BUILD_REQUIRES" => {
     "Class::Data::Inheritable" => 0,
+    "File::Find" => 0,
     "File::Temp" => 0,
-    "FindBin" => 0,
     "IO::String" => 0,
     "Test::Class" => 0,
+    "Test::More" => "0.88",
     "Test::Most" => 0,
     "YAML" => 0,
     "base" => 0
@@ -26,7 +27,8 @@ my %WriteMakefileArgs = (
   },
   "DISTNAME" => "Eng-Seq-Builder",
   "EXE_FILES" => [
-    "bin/eng-seq-builder"
+    "bin/eng-seq-builder",
+    "bin/make-schema.pl"
   ],
   "LICENSE" => "perl",
   "NAME" => "Eng::Seq::Builder",
@@ -46,7 +48,11 @@ my %WriteMakefileArgs = (
     "Const::Fast" => 0,
     "DBIx::Class::Core" => 0,
     "DBIx::Class::Schema" => 0,
+    "DBIx::Class::Schema::Loader" => 0,
     "Data::Dump" => 0,
+    "File::Spec" => 0,
+    "FindBin" => 0,
+    "Getopt::Long" => 0,
     "Hash::MoreUtils" => 0,
     "List::MoreUtils" => 0,
     "List::Util" => 0,
@@ -63,7 +69,9 @@ my %WriteMakefileArgs = (
     "MooseX::Types" => 0,
     "MooseX::Types::Moose" => 0,
     "MooseX::Types::Path::Class" => 0,
+    "Pod::Usage" => 0,
     "Sub::Exporter" => 0,
+    "Term::ReadPassword" => 0,
     "Text::Table" => 0,
     "Throwable::Error" => 0,
     "Try::Tiny" => 0,
@@ -72,7 +80,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.002",
+  "VERSION" => "0.003",
   "test" => {
     "TESTS" => "t/*.t"
   }

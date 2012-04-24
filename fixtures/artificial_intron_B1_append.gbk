@@ -1,0 +1,13 @@
+LOCUS       artificial_intron_B1_append              147 bp    dna     linear   UNK 
+ACCESSION   unknown
+KEYWORDS    .
+FEATURES             Location/Qualifiers
+     intron          1..147
+                     /note="5' Ifitm2 intron"
+     misc_feature    1..21
+                     /note="oligo append B1"
+ORIGIN      
+        1 gtgagtgtgc tagagggggt gggagggaat ggtgtaagaa ggtgtgtgtg agcctgaagc
+       61 gccatctact cagatagcac cgaggtgtga gtgtggggtc ctttctgtaa gaaagtgtgt
+      121 gtgcaccctt cctatttgtg tgtgtgt
+//

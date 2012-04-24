@@ -1,6 +1,6 @@
 package EngSeqBuilder::CLI::Command::DeleteSeq;
 {
-  $EngSeqBuilder::CLI::Command::DeleteSeq::VERSION = '0.002';
+  $EngSeqBuilder::CLI::Command::DeleteSeq::VERSION = '0.003';
 }
 
 use Moose;

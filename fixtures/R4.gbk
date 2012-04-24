@@ -1,0 +1,11 @@
+LOCUS       Gateway_R4               124 bp    dna     linear   UNK 
+ACCESSION   unknown
+FEATURES             Location/Qualifiers
+     misc_feature    1..124
+                     /note="R4 gateway site"
+BASE COUNT       59 a     17 c     14 g     34 t
+ORIGIN      
+        1 caactttgta tagaaaagtt gaacgagaaa cgtaaaatga tataaatatc aatatattaa
+       61 attagatttt gcataaaaaa cagactacat aatactgtaa aacacaacat atccagtcac
+      121 tatg
+//

@@ -1,0 +1,10 @@
+LOCUS       Gateway_L4                96 bp    dna     linear   UNK 
+ACCESSION   unknown
+FEATURES             Location/Qualifiers
+     misc_feature    1..96
+                     /note="L4 gateway site"
+BASE COUNT       30 a     12 c     18 g     36 t
+ORIGIN      
+        1 caataatgat tttattttga ctgatagtga cctgttcgtt gcaacaaatt gatgagcaag
+       61 gcttttttat aatgccaact ttgtatagaa aagttg
+//
