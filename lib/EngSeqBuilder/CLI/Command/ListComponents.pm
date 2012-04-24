@@ -1,4 +1,7 @@
 package EngSeqBuilder::CLI::Command::ListComponents;
+{
+  $EngSeqBuilder::CLI::Command::ListComponents::VERSION = '0.001';
+}
 
 use Moose;
 use namespace::autoclean;

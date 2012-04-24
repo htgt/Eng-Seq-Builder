@@ -1,4 +1,7 @@
 package EngSeqBuilder::CLI::Command::LoadFixtures;
+{
+  $EngSeqBuilder::CLI::Command::LoadFixtures::VERSION = '0.001';
+}
 
 use Moose;
 use MooseX::Types::Path::Class;

@@ -1,4 +1,7 @@
 package EngSeqBuilder::Compat;
+{
+  $EngSeqBuilder::Compat::VERSION = '0.001';
+}
 
 use strict;
 use warnings FATAL => 'all';

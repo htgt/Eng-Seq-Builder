@@ -1,4 +1,7 @@
 package EngSeqBuilder;
+{
+  $EngSeqBuilder::VERSION = '0.001';
+}
 
 use Moose;
 use MooseX::ClassAttribute;

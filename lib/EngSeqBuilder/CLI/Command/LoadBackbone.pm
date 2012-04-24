@@ -1,4 +1,7 @@
 package EngSeqBuilder::CLI::Command::LoadBackbone;
+{
+  $EngSeqBuilder::CLI::Command::LoadBackbone::VERSION = '0.001';
+}
 
 use Moose;
 use Bio::SeqIO;

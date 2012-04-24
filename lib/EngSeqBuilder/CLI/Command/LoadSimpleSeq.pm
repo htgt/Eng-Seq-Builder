@@ -1,4 +1,7 @@
 package EngSeqBuilder::CLI::Command::LoadSimpleSeq;
+{
+  $EngSeqBuilder::CLI::Command::LoadSimpleSeq::VERSION = '0.001';
+}
 
 use Moose;
 use Bio::SeqIO;

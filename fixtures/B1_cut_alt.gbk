@@ -1,8 +1,0 @@
-LOCUS       B1_Gateway_cut_alt                25 bp    dna     linear   UNK 
-ACCESSION   unknown
-FEATURES             Location/Qualifiers
-     misc_feature    1..25
-                     /note="B1 Gateway"
-ORIGIN      
-        1 ccaactttgt acaaaaaagc aggct
-//

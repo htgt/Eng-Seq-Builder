@@ -1,4 +1,7 @@
 package EngSeqBuilder::CLI::Command::DeleteSeq;
+{
+  $EngSeqBuilder::CLI::Command::DeleteSeq::VERSION = '0.001';
+}
 
 use Moose;
 use Bio::SeqIO;

@@ -1,4 +1,7 @@
 package EngSeqBuilder::CLI::Command;
+{
+  $EngSeqBuilder::CLI::Command::VERSION = '0.001';
+}
 
 use Moose;
 use MooseX::Types::Path::Class;

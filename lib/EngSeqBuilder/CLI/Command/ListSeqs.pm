@@ -1,4 +1,7 @@
 package EngSeqBuilder::CLI::Command::ListSeqs;
+{
+  $EngSeqBuilder::CLI::Command::ListSeqs::VERSION = '0.001';
+}
 
 use Moose;
 use Text::Table;

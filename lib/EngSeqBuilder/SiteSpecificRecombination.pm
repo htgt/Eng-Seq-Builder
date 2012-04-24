@@ -1,4 +1,7 @@
 package EngSeqBuilder::SiteSpecificRecombination;
+{
+  $EngSeqBuilder::SiteSpecificRecombination::VERSION = '0.001';
+}
 
 use strict;
 use warnings FATAL => 'all';

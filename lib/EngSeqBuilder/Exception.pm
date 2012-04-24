@@ -1,4 +1,7 @@
 package EngSeqBuilder::Exception;
+{
+  $EngSeqBuilder::Exception::VERSION = '0.001';
+}
 
 use Moose;
 extends 'Throwable::Error';

@@ -1,4 +1,7 @@
 package EngSeqBuilder::CLI::Command::CreateCompoundSeq;
+{
+  $EngSeqBuilder::CLI::Command::CreateCompoundSeq::VERSION = '0.001';
+}
 
 use Moose;
 use EngSeqBuilder::Exception;

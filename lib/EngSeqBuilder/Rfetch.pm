@@ -1,4 +1,7 @@
 package EngSeqBuilder::Rfetch;
+{
+  $EngSeqBuilder::Rfetch::VERSION = '0.001';
+}
 
 use Moose::Role;
 use EngSeqBuilder::Exception;

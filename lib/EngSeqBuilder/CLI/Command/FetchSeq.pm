@@ -1,4 +1,7 @@
 package EngSeqBuilder::CLI::Command::FetchSeq;
+{
+  $EngSeqBuilder::CLI::Command::FetchSeq::VERSION = '0.001';
+}
 
 use Moose;
 use Bio::SeqIO;

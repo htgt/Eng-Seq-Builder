@@ -1,4 +1,7 @@
 package EngSeqBuilder::Config;
+{
+  $EngSeqBuilder::Config::VERSION = '0.001';
+}
 
 use Moose;
 use EngSeqBuilder::Exception;

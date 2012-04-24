@@ -1,4 +1,7 @@
 package EngSeqBuilder::Rfetch::EnsEMBL;
+{
+  $EngSeqBuilder::Rfetch::EnsEMBL::VERSION = '0.001';
+}
 
 use Moose;
 use MooseX::Params::Validate;

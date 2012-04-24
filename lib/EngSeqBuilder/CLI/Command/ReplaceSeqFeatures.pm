@@ -1,4 +1,7 @@
 package EngSeqBuilder::CLI::Command::ReplaceSeqFeatures;
+{
+  $EngSeqBuilder::CLI::Command::ReplaceSeqFeatures::VERSION = '0.001';
+}
 
 use Moose;
 use Bio::SeqIO;
