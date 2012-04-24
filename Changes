@@ -1,5 +1,9 @@
 {{$NEXT}}
 
+0.002     2012-04-24 11:12:26 Europe/London
+
+	Remove conflicting Git::Tag configuration from dist.ini.
+
 0.001     2012-04-24 11:10:20 Europe/London
 
         Initial release.
