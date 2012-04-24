@@ -1,0 +1,9 @@
+LOCUS       B4_Gateway                21 bp    dna     linear   UNK 
+ACCESSION   unknown
+FEATURES             Location/Qualifiers
+     misc_feature    1..21
+                     /note="B4 gateway site"
+BASE COUNT        8 a      2 c      4 g      7 t
+ORIGIN      
+        1 caacttttct atacaaagtt g
+//

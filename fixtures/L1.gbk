@@ -1,0 +1,10 @@
+LOCUS       Gateway_L1                99 bp    dna     linear   UNK 
+ACCESSION   unknown
+FEATURES             Location/Qualifiers
+     misc_feature    1..99
+                     /note="L1 gateway site"
+BASE COUNT       34 a     14 c     16 g     35 t
+ORIGIN      
+        1 aaataatgat tttattttga ctgatagtga cctgttcgtt gcaacaaatt gataagcaat
+       61 gcttttttat aatgccaact ttgtacaaaa aagcaggct
+//

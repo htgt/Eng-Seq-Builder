@@ -1,0 +1,9 @@
+LOCUS       standard_backbone_B3_append           15 bp    dna     linear   UNK 
+ACCESSION   unknown
+FEATURES             Location/Qualifiers
+     misc_feature    6..13
+                     /note="AsiSI"
+BASE COUNT        2 a      6 c      6 g      1 t
+ORIGIN      
+        1 cggacgcgat cgccg
+//

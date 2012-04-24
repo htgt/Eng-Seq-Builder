@@ -1,0 +1,9 @@
+LOCUS       B3_Gateway                21 bp    dna     linear   UNK 
+ACCESSION   unknown
+FEATURES             Location/Qualifiers
+     misc_feature    1..21
+                     /note="B3 gateway site"
+BASE COUNT        8 a      2 c      3 g      8 t
+ORIGIN      
+        1 caactttatt atacaaagtt g
+//
