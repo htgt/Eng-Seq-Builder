@@ -1,6 +1,6 @@
 package EngSeqBuilder::CLI::Command::LoadCassette;
 {
-  $EngSeqBuilder::CLI::Command::LoadCassette::VERSION = '0.003';
+  $EngSeqBuilder::CLI::Command::LoadCassette::VERSION = '0.004';
 }
 
 use Moose;

@@ -1,6 +1,6 @@
 package EngSeqBuilder::Schema::Result::EngSeqType;
 {
-  $EngSeqBuilder::Schema::Result::EngSeqType::VERSION = '0.003';
+  $EngSeqBuilder::Schema::Result::EngSeqType::VERSION = '0.004';
 }
 
 # Created by DBIx::Class::Schema::Loader

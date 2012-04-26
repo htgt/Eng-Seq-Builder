@@ -1,6 +1,6 @@
 package EngSeqBuilder::CLI::Command::LoadSimpleSeq;
 {
-  $EngSeqBuilder::CLI::Command::LoadSimpleSeq::VERSION = '0.003';
+  $EngSeqBuilder::CLI::Command::LoadSimpleSeq::VERSION = '0.004';
 }
 
 use Moose;

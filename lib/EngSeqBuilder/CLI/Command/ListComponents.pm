@@ -1,6 +1,6 @@
 package EngSeqBuilder::CLI::Command::ListComponents;
 {
-  $EngSeqBuilder::CLI::Command::ListComponents::VERSION = '0.003';
+  $EngSeqBuilder::CLI::Command::ListComponents::VERSION = '0.004';
 }
 
 use Moose;

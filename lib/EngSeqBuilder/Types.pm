@@ -1,6 +1,6 @@
 package EngSeqBuilder::Types;
 {
-  $EngSeqBuilder::Types::VERSION = '0.003';
+  $EngSeqBuilder::Types::VERSION = '0.004';
 }
 use warnings FATAL => 'all';
 use strict;

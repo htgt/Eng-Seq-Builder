@@ -1,6 +1,6 @@
 package EngSeqBuilder::CLI::Command;
 {
-  $EngSeqBuilder::CLI::Command::VERSION = '0.003';
+  $EngSeqBuilder::CLI::Command::VERSION = '0.004';
 }
 
 use Moose;

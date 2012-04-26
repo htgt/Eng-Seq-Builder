@@ -1,6 +1,6 @@
 package EngSeqBuilder::CLI::Command::ReplaceSeqFeatures;
 {
-  $EngSeqBuilder::CLI::Command::ReplaceSeqFeatures::VERSION = '0.003';
+  $EngSeqBuilder::CLI::Command::ReplaceSeqFeatures::VERSION = '0.004';
 }
 
 use Moose;

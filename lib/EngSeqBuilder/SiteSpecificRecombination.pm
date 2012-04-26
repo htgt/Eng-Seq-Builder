@@ -1,6 +1,6 @@
 package EngSeqBuilder::SiteSpecificRecombination;
 {
-  $EngSeqBuilder::SiteSpecificRecombination::VERSION = '0.003';
+  $EngSeqBuilder::SiteSpecificRecombination::VERSION = '0.004';
 }
 
 use strict;

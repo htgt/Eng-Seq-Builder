@@ -1,6 +1,6 @@
 package EngSeqBuilder::CLI::Command::FetchSeq;
 {
-  $EngSeqBuilder::CLI::Command::FetchSeq::VERSION = '0.003';
+  $EngSeqBuilder::CLI::Command::FetchSeq::VERSION = '0.004';
 }
 
 use Moose;

@@ -5,7 +5,6 @@ META.yml
 Makefile.PL
 README
 bin/eng-seq-builder
-bin/make-schema.pl
 fixtures/B1.gbk
 fixtures/B1_cut.gbk
 fixtures/B1_cut_alt.gbk
@@ -74,8 +73,8 @@ sql/grant_live.sql
 sql/init.sql
 sql/schema.sql
 t/00-compile.t
-t/00-package-names.t
 t/05-compound-seq.t
 t/10-eng-seq-builder.t
 t/lib/MyTest/EngSeqBuilder.pm
 t/release-no-smart-comments.t
+t/release-package-names.t

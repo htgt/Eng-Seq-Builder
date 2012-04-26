@@ -1,6 +1,6 @@
 package EngSeqBuilder::Schema::Result::CompoundEngSeqComponent;
 {
-  $EngSeqBuilder::Schema::Result::CompoundEngSeqComponent::VERSION = '0.003';
+  $EngSeqBuilder::Schema::Result::CompoundEngSeqComponent::VERSION = '0.004';
 }
 
 # Created by DBIx::Class::Schema::Loader

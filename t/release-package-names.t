@@ -1,5 +1,13 @@
 #!perl
 
+BEGIN {
+  unless ($ENV{RELEASE_TESTING}) {
+    require Test::More;
+    Test::More::plan(skip_all => 'these tests are for release candidate testing');
+  }
+}
+
+
 use strict;
 use warnings;
 
@@ -29,10 +37,9 @@ sub found_package_name($) {
 my @files;
 find(
   sub {
-    my $found = $File::Find::name;
-    return unless $found =~ /\.pm\z/ and -f $found;
+    return unless $_ =~ /\.pm\z/ and -f $_;
     # nothing to skip
-    push @files, [ $found, found_package_name $found, expected_package_name $found ];
+    push @files, [ $File::Find::name, found_package_name $_, expected_package_name $File::Find::name ];
   },
   'lib',
 );

@@ -1,6 +1,6 @@
 package EngSeqBuilder::CLI::Command::LoadFixtures;
 {
-  $EngSeqBuilder::CLI::Command::LoadFixtures::VERSION = '0.003';
+  $EngSeqBuilder::CLI::Command::LoadFixtures::VERSION = '0.004';
 }
 
 use Moose;

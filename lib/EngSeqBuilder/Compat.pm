@@ -1,6 +1,6 @@
 package EngSeqBuilder::Compat;
 {
-  $EngSeqBuilder::Compat::VERSION = '0.003';
+  $EngSeqBuilder::Compat::VERSION = '0.004';
 }
 
 use strict;
