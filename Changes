@@ -1,5 +1,9 @@
 {{$NEXT}}
 
+0.004     2012-04-26 12:28:32 Europe/London
+
+	Bugfix excluded path in dist.ini so that make-schema.pl is not installed.
+
 0.003     2012-04-24 14:11:59 Europe/London
 
 	Update dist.ini to use Dist::Zilla::PluginBundle::Author::HTGT.
