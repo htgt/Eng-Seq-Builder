@@ -60,6 +60,8 @@ sub execute {
     my $seq_io = Bio::SeqIO->new( -fh => \*STDOUT, -format => $self->format );
 
     $seq_io->write_seq( $seq );
+
+    return;
 }
 
 __PACKAGE__->meta->make_immutable;

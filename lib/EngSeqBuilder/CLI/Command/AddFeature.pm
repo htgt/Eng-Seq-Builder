@@ -99,10 +99,10 @@ sub _build_seq {
     my $self = shift;
 
     if ( $self->type ) {
-        return $self->eng_seq_builder->_fetch_seq( $self->name, $self->type );
+        return $self->eng_seq_builder->_fetch_seq( $self->name, $self->type ); ## no critic(ProtectPrivateSubs)
     }
     else {
-        return $self->eng_seq_builder->_fetch_seq( $self->name );
+        return $self->eng_seq_builder->_fetch_seq( $self->name ); ## no critic(ProtectPrivateSubs)
     }
 }
 
@@ -123,6 +123,8 @@ sub execute {
             $self->eng_seq_builder->txn_rollback unless $self->commit;
         }
     );
+
+    return;
 }
 
 __PACKAGE__->meta->make_immutable;

@@ -41,6 +41,8 @@ sub execute {
             $self->eng_seq_builder->txn_rollback unless $self->commit;
         }
     );
+
+    return;
 }
 
 sub load_component_fixtures {
@@ -56,6 +58,8 @@ sub load_component_fixtures {
             $self->_load_compound_sequence( $spec );
         }
     }
+
+    return;
 }
 
 sub _load_compound_sequence {
@@ -66,6 +70,8 @@ sub _load_compound_sequence {
         type       => $spec->{ type },
         components => $spec->{ components },
     );
+
+    return;
 }
 
 sub _load_simple_sequence {
@@ -90,6 +96,8 @@ sub _load_simple_sequence {
             seq  => $seq->seq,
         );
     }
+
+    return;
 }
 
 sub load_mutant_sequences {
@@ -116,6 +124,8 @@ sub load_mutant_sequences {
         );
 
     }
+
+    return;
 }
 
 __PACKAGE__->meta->make_immutable;

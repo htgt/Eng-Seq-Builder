@@ -24,14 +24,14 @@ sub apply_recombinase {
     my ( $seq, $recombinase ) = @_;
 
     if ( $recombinase eq 'cre' ) {
-        apply_cre( $seq );
+        return apply_cre( $seq );
     }
-    elsif ( $recombinase eq 'flp' ) {
-        apply_flp( $seq );
+
+    if ( $recombinase eq 'flp' ) {
+        return apply_flp( $seq );
     }
-    else {
-        confess "Unrecognized recombinase: '$recombinase'";
-    }
+
+    confess "Unrecognized recombinase: '$recombinase'";
 }
 
 sub apply_cre {

@@ -66,16 +66,18 @@ sub BUILD {
     }
 
     Log::Log4perl->easy_init( \%log4p );
+
+    return;
 }
 
 sub _build_eng_seq_builder {
     my $self = shift;
 
     if ( $self->configfile ) {
-        EngSeqBuilder->new( configfile => $self->configfile );
+        return EngSeqBuilder->new( configfile => $self->configfile );
     }
     else {
-        EngSeqBuilder->new();
+        return EngSeqBuilder->new();
     }
 }
 

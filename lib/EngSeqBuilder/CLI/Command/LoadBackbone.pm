@@ -54,6 +54,8 @@ sub execute {
             $self->eng_seq_builder->txn_rollback unless $self->commit;
         }
     );
+
+    return;
 }
 
 sub create_backbone_seq {
@@ -90,6 +92,8 @@ sub create_backbone_seq {
         components        => [ 'Standard_B4_append', $R4_or_B4, $backbone_name, $R3_or_B3, 'Standard_B3_append' ],
         whole_seq_feature => $whole_seq_feature,
     );
+
+    return;
 }
 
 sub _get_backbone_without_gateway {

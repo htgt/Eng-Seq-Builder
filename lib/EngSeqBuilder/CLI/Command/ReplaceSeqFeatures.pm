@@ -36,10 +36,10 @@ sub execute {
 
     my $eng_seq;
     if ( $self->type ) {
-        $eng_seq = $self->eng_seq_builder->_fetch_seq( $self->name, $self->type );
+        $eng_seq = $self->eng_seq_builder->_fetch_seq( $self->name, $self->type ); ## no critic(ProtectPrivateSubs)
     }
     else {
-        $eng_seq = $self->eng_seq_builder->_fetch_seq( $self->name );
+        $eng_seq = $self->eng_seq_builder->_fetch_seq( $self->name ); ## no critic(ProtectPrivateSubs)
     }
 
     die "Features can only be replaced on simple sequences\n"
@@ -59,6 +59,8 @@ sub execute {
             $eng_seq->add_features( \@features );
         }
     );
+
+    return;
 }
 
 __PACKAGE__->meta->make_immutable;

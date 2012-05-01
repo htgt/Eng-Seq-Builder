@@ -199,8 +199,11 @@ sub add_features {
             }
         }
     }
+
+    return;
 }
 
+## no critic(ProhibitBuiltinHomonyms)
 sub length {
     my $self = shift;
 
@@ -214,6 +217,7 @@ sub length {
         confess( 'length() not supported for EngSeq of class ' . $self->class );
     }
 }
+## use critic
 
 around delete => sub {
     my $orig = shift;
@@ -236,6 +240,8 @@ sub delete_seq_features {
         }
         $feature->delete;
     }
+
+    return;
 }
 __PACKAGE__->meta->make_immutable;
 1;

@@ -17,7 +17,7 @@ has _cached_rfetch_helpers => (
 sub _rfetch_helper {
     my ( $self, $species, $version ) = @_;
 
-    $self->_cached_rfetch_helpers->{ $species }->{ $version } ||= EngSeqBuilder::Rfetch::EnsEMBL->new(
+    return $self->_cached_rfetch_helpers->{ $species }->{ $version } ||= EngSeqBuilder::Rfetch::EnsEMBL->new(
         species => $species,
         version => $version,
         config  => $self->config

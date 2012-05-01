@@ -61,6 +61,8 @@ sub execute {
     }
 
     print $table;
+
+    return;
 }
 
 __PACKAGE__->meta->make_immutable;

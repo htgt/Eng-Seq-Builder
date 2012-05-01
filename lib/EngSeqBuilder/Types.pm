@@ -18,7 +18,7 @@ subtype VectorStage,
 
 subtype Strand,
     as Int,
-    where { $_ eq 1 or $_ eq -1 },
+    where { $_ == 1 or $_ == -1 },
     message {"The strand you provided, $_, is invalid; strand must be either +1 or -1"};
 
 1;
