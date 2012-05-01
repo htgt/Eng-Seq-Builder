@@ -1,9 +1,5 @@
 {{$NEXT}}
 
-0.005     2012-05-01 16:09:12 Europe/London
-
-	Address various issues flagged by Perl::Critic.
-
 0.004     2012-04-26 14:56:35 Europe/London
 
 	Bugfix excluded path in dist.ini so that make-schema.pl is not installed.
