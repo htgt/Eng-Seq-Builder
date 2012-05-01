@@ -502,7 +502,7 @@ sub x_delete_seq :Tests {
 sub _delete {    
     my ( $test, $name, $type ) = @_;
 
-    ok $test->eng_seq_builder->delete_seq( name => $name, type => $type ), "delete $name ($type)";
+    lives_ok { $test->eng_seq_builder->delete_seq( name => $name, type => $type ) } "delete $name ($type)";
     throws_ok {
         $test->eng_seq_builder->fetch_seq( name => $name, type => $type )
     } qr/Found no sequences with name '$name' of type '$type'/;

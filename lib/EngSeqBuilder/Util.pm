@@ -1,7 +1,10 @@
 package EngSeqBuilder::Util;
+## no critic(RequireUseStrict,RequireUseWarnings)
 {
-  $EngSeqBuilder::Util::VERSION = '0.004';
+    $EngSeqBuilder::Util::VERSION = '0.005';
 }
+## use critic
+
 
 use strict;
 use warnings FATAL => 'all';
@@ -46,6 +49,7 @@ sub _get_gateway_pos_and_length {
     return ( shift @start_index, length( $gateway_seq ) );
 }
 
+## no critic(RequireFinalReturn)
 sub get_gateway_boundary {
     my ( $seq, $boundary_seqs ) = @_;
 
@@ -58,6 +62,7 @@ sub get_gateway_boundary {
 
     EngSeqBuilder::Exception->throw( "Failed to locate gateway boundary in " . $seq->display_id );
 }
+## use critic
 
 sub clone_bio_seq {
     my $seq = shift;

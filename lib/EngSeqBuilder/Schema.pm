@@ -1,7 +1,10 @@
 package EngSeqBuilder::Schema;
+## no critic(RequireUseStrict,RequireUseWarnings)
 {
-  $EngSeqBuilder::Schema::VERSION = '0.004';
+    $EngSeqBuilder::Schema::VERSION = '0.005';
 }
+## use critic
+
 
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE

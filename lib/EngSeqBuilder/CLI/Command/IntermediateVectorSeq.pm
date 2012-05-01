@@ -1,7 +1,10 @@
 package EngSeqBuilder::CLI::Command::IntermediateVectorSeq;
+## no critic(RequireUseStrict,RequireUseWarnings)
 {
-  $EngSeqBuilder::CLI::Command::IntermediateVectorSeq::VERSION = '0.004';
+    $EngSeqBuilder::CLI::Command::IntermediateVectorSeq::VERSION = '0.005';
 }
+## use critic
+
 
 use Moose;
 use Bio::SeqIO;
@@ -63,6 +66,8 @@ sub execute {
     my $seq_io = Bio::SeqIO->new( -fh => \*STDOUT, -format => $self->format );
 
     $seq_io->write_seq( $seq );
+
+    return;
 }
 
 __PACKAGE__->meta->make_immutable;

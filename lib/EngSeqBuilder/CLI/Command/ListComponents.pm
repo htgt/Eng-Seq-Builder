@@ -1,7 +1,10 @@
 package EngSeqBuilder::CLI::Command::ListComponents;
+## no critic(RequireUseStrict,RequireUseWarnings)
 {
-  $EngSeqBuilder::CLI::Command::ListComponents::VERSION = '0.004';
+    $EngSeqBuilder::CLI::Command::ListComponents::VERSION = '0.005';
 }
+## use critic
+
 
 use Moose;
 use namespace::autoclean;
@@ -35,6 +38,8 @@ sub execute {
     }
 
     $self->_dump_components( $components, 0, 4 );
+
+    return;
 }
 
 sub _dump_components {
@@ -48,6 +53,8 @@ sub _dump_components {
     else {
         print join( '', ( q{ } ) x $indent, $components ) . "\n";
     }
+
+    return;
 }
 
 __PACKAGE__->meta->make_immutable;

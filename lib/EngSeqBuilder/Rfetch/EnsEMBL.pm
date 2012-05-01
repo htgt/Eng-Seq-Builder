@@ -1,7 +1,10 @@
 package EngSeqBuilder::Rfetch::EnsEMBL;
+## no critic(RequireUseStrict,RequireUseWarnings)
 {
-  $EngSeqBuilder::Rfetch::EnsEMBL::VERSION = '0.004';
+    $EngSeqBuilder::Rfetch::EnsEMBL::VERSION = '0.005';
 }
+## use critic
+
 
 use Moose;
 use MooseX::Params::Validate;
@@ -39,7 +42,7 @@ has slice_adaptor => (
 sub _build_slice_adaptor {
     my $self = shift;
 
-    $self->ensembl_registry->get_adaptor( $self->species, 'core', 'slice' );
+    return $self->ensembl_registry->get_adaptor( $self->species, 'core', 'slice' );
 }
 
 has transcript_adaptor => (
@@ -51,14 +54,14 @@ has transcript_adaptor => (
 
 sub _build_transcript_adaptor {
     my $self = shift;
-    $self->ensembl_registry->get_adaptor( $self->species, 'core', 'transcript' );
+    return $self->ensembl_registry->get_adaptor( $self->species, 'core', 'transcript' );
 }
 
 sub fetch_seq {
-    my $self = shift;
+    my ( $self, @args ) = @_;
 
     my %params = validated_hash(
-        \@_,
+        \@args,
         seq_region_name    => { isa => 'Str' },
         seq_region_start   => { isa => 'Int' },
         seq_region_end     => { isa => 'Int' },
@@ -83,19 +86,17 @@ sub fetch_seq {
     );
 
     if ( exists $params{ include_transcript } and $params{ include_transcript } ) {
-        $self->_annotate_exons(
-            $seq, $slice,
-            $params{ seq_region_strand },
-            $params{ include_transcript },
-            $params{ targeted }
-        );
+        $self->_annotate_exons( %params, seq => $seq, slice => $slice );
     }
 
     return $seq;
 }
 
 sub _annotate_exons {
-    my ( $self, $seq, $slice, $strand, $transcript_id, $targeted ) = @_;
+    my ( $self, %params ) = @_;
+
+    my ( $seq, $slice, $strand, $transcript_id, $targeted )
+        = @params{ qw( seq slice seq_region_strand include_transcript targeted ) };
 
     my $exons = $self->_exons_on_slice( $slice, $strand, $transcript_id );
 
@@ -135,6 +136,8 @@ sub _annotate_exons {
         $exon_feature->add_tag_value( 'type', 'targeted' ) if $targeted;
         $seq->add_SeqFeature( $exon_feature );
     }
+
+    return;
 }
 
 sub _exons_on_slice {
@@ -144,7 +147,7 @@ sub _exons_on_slice {
     my $transcript = $self->transcript_adaptor->fetch_by_stable_id( $transcript_id )
         or EngSeqBuilder::Exception->throw( "Failed to retrieve transcript $transcript_id" );
     my %is_wanted = map { $_->stable_id => 1 } @{ $transcript->get_all_Exons };
-    $exons = [ grep $is_wanted{ $_->stable_id }, @{ $slice->get_all_Exons } ];
+    $exons = [ grep { $is_wanted{ $_->stable_id } } @{ $slice->get_all_Exons } ];
 
     return $exons;
 }

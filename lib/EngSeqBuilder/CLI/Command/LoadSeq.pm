@@ -1,7 +1,10 @@
 package EngSeqBuilder::CLI::Command::LoadSeq;
+## no critic(RequireUseStrict,RequireUseWarnings)
 {
-  $EngSeqBuilder::CLI::Command::LoadSeq::VERSION = '0.004';
+    $EngSeqBuilder::CLI::Command::LoadSeq::VERSION = '0.005';
 }
+## use critic
+
 
 use Moose;
 use Bio::SeqIO;
@@ -63,6 +66,8 @@ sub execute {
             $self->eng_seq_builder->txn_rollback unless $self->commit;
         }
     );
+
+    return;
 }
 
 __PACKAGE__->meta->make_immutable;

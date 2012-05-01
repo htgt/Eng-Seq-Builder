@@ -1,7 +1,10 @@
 package EngSeqBuilder::Schema::Result::EngSeqFeature;
+## no critic(RequireUseStrict,RequireUseWarnings)
 {
-  $EngSeqBuilder::Schema::Result::EngSeqFeature::VERSION = '0.004';
+    $EngSeqBuilder::Schema::Result::EngSeqFeature::VERSION = '0.005';
 }
+## use critic
+
 
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
@@ -144,7 +147,7 @@ sub _build_bio_seq_feature {
     );
 
     for my $tag ( $self->eng_seq_feature_tags ) {
-        $bio_seq_feature->add_tag_value( $tag->name, map $_->value, $tag->eng_seq_feature_tag_values );
+        $bio_seq_feature->add_tag_value( $tag->name, map { $_->value } $tag->eng_seq_feature_tag_values );
     }
 
     return $bio_seq_feature;

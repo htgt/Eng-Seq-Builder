@@ -75,6 +75,6 @@ sql/schema.sql
 t/00-compile.t
 t/05-compound-seq.t
 t/10-eng-seq-builder.t
+t/author-critic.t
 t/lib/MyTest/EngSeqBuilder.pm
 t/release-no-smart-comments.t
-t/release-package-names.t

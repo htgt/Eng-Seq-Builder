@@ -1,7 +1,10 @@
 package EngSeqBuilder::SiteSpecificRecombination;
+## no critic(RequireUseStrict,RequireUseWarnings)
 {
-  $EngSeqBuilder::SiteSpecificRecombination::VERSION = '0.004';
+    $EngSeqBuilder::SiteSpecificRecombination::VERSION = '0.005';
 }
+## use critic
+
 
 use strict;
 use warnings FATAL => 'all';
@@ -27,14 +30,14 @@ sub apply_recombinase {
     my ( $seq, $recombinase ) = @_;
 
     if ( $recombinase eq 'cre' ) {
-        apply_cre( $seq );
+        return apply_cre( $seq );
     }
-    elsif ( $recombinase eq 'flp' ) {
-        apply_flp( $seq );
+
+    if ( $recombinase eq 'flp' ) {
+        return apply_flp( $seq );
     }
-    else {
-        confess "Unrecognized recombinase: '$recombinase'";
-    }
+
+    confess "Unrecognized recombinase: '$recombinase'";
 }
 
 sub apply_cre {

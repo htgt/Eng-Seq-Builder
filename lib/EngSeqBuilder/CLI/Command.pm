@@ -1,7 +1,10 @@
 package EngSeqBuilder::CLI::Command;
+## no critic(RequireUseStrict,RequireUseWarnings)
 {
-  $EngSeqBuilder::CLI::Command::VERSION = '0.004';
+    $EngSeqBuilder::CLI::Command::VERSION = '0.005';
 }
+## use critic
+
 
 use Moose;
 use MooseX::Types::Path::Class;
@@ -69,16 +72,18 @@ sub BUILD {
     }
 
     Log::Log4perl->easy_init( \%log4p );
+
+    return;
 }
 
 sub _build_eng_seq_builder {
     my $self = shift;
 
     if ( $self->configfile ) {
-        EngSeqBuilder->new( configfile => $self->configfile );
+        return EngSeqBuilder->new( configfile => $self->configfile );
     }
     else {
-        EngSeqBuilder->new();
+        return EngSeqBuilder->new();
     }
 }
 

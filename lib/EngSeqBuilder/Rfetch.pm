@@ -1,7 +1,10 @@
 package EngSeqBuilder::Rfetch;
+## no critic(RequireUseStrict,RequireUseWarnings)
 {
-  $EngSeqBuilder::Rfetch::VERSION = '0.004';
+    $EngSeqBuilder::Rfetch::VERSION = '0.005';
 }
+## use critic
+
 
 use Moose::Role;
 use EngSeqBuilder::Exception;
@@ -20,7 +23,7 @@ has _cached_rfetch_helpers => (
 sub _rfetch_helper {
     my ( $self, $species, $version ) = @_;
 
-    $self->_cached_rfetch_helpers->{ $species }->{ $version } ||= EngSeqBuilder::Rfetch::EnsEMBL->new(
+    return $self->_cached_rfetch_helpers->{ $species }->{ $version } ||= EngSeqBuilder::Rfetch::EnsEMBL->new(
         species => $species,
         version => $version,
         config  => $self->config

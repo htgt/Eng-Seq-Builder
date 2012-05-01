@@ -1,7 +1,10 @@
 package EngSeqBuilder::CLI::Command::LoadSimpleSeq;
+## no critic(RequireUseStrict,RequireUseWarnings)
 {
-  $EngSeqBuilder::CLI::Command::LoadSimpleSeq::VERSION = '0.004';
+    $EngSeqBuilder::CLI::Command::LoadSimpleSeq::VERSION = '0.005';
 }
+## use critic
+
 
 use Moose;
 use Bio::SeqIO;
@@ -72,6 +75,8 @@ sub execute {
             $self->eng_seq_builder->txn_rollback unless $self->commit;
         }
     );
+
+    return;
 }
 
 sub _get_features {

@@ -1,7 +1,10 @@
 package EngSeqBuilder::CLI::Command::LoadComponent;
+## no critic(RequireUseStrict,RequireUseWarnings)
 {
-  $EngSeqBuilder::CLI::Command::LoadComponent::VERSION = '0.004';
+    $EngSeqBuilder::CLI::Command::LoadComponent::VERSION = '0.005';
 }
+## use critic
+
 
 use Moose;
 use MooseX::Types::Path::Class;
@@ -65,6 +68,8 @@ sub execute {
             $self->eng_seq_builder->txn_rollback unless $self->commit;
         }
     );
+
+    return;
 }
 
 __PACKAGE__->meta->make_immutable;

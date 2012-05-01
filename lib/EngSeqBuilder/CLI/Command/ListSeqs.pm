@@ -1,7 +1,10 @@
 package EngSeqBuilder::CLI::Command::ListSeqs;
+## no critic(RequireUseStrict,RequireUseWarnings)
 {
-  $EngSeqBuilder::CLI::Command::ListSeqs::VERSION = '0.004';
+    $EngSeqBuilder::CLI::Command::ListSeqs::VERSION = '0.005';
 }
+## use critic
+
 
 use Moose;
 use Text::Table;
@@ -64,6 +67,8 @@ sub execute {
     }
 
     print $table;
+
+    return;
 }
 
 __PACKAGE__->meta->make_immutable;

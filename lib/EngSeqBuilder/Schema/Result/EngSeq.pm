@@ -1,7 +1,10 @@
 package EngSeqBuilder::Schema::Result::EngSeq;
+## no critic(RequireUseStrict,RequireUseWarnings)
 {
-  $EngSeqBuilder::Schema::Result::EngSeq::VERSION = '0.004';
+    $EngSeqBuilder::Schema::Result::EngSeq::VERSION = '0.005';
 }
+## use critic
+
 
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
@@ -202,8 +205,11 @@ sub add_features {
             }
         }
     }
+
+    return;
 }
 
+## no critic(ProhibitBuiltinHomonyms)
 sub length {
     my $self = shift;
 
@@ -217,6 +223,7 @@ sub length {
         confess( 'length() not supported for EngSeq of class ' . $self->class );
     }
 }
+## use critic
 
 around delete => sub {
     my $orig = shift;
@@ -239,6 +246,8 @@ sub delete_seq_features {
         }
         $feature->delete;
     }
+
+    return;
 }
 __PACKAGE__->meta->make_immutable;
 1;

@@ -1,7 +1,10 @@
 package EngSeqBuilder::Exception;
+## no critic(RequireUseStrict,RequireUseWarnings)
 {
-  $EngSeqBuilder::Exception::VERSION = '0.004';
+    $EngSeqBuilder::Exception::VERSION = '0.005';
 }
+## use critic
+
 
 use Moose;
 extends 'Throwable::Error';

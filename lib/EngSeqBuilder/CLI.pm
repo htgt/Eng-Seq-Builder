@@ -1,7 +1,10 @@
 package EngSeqBuilder::CLI;
+## no critic(RequireUseStrict,RequireUseWarnings)
 {
-  $EngSeqBuilder::CLI::VERSION = '0.004';
+    $EngSeqBuilder::CLI::VERSION = '0.005';
 }
+## use critic
+
 
 use Moose;
 use namespace::autoclean;

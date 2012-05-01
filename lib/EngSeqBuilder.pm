@@ -1,7 +1,10 @@
 package EngSeqBuilder;
+## no critic(RequireUseStrict,RequireUseWarnings)
 {
-  $EngSeqBuilder::VERSION = '0.004';
+    $EngSeqBuilder::VERSION = '0.005';
 }
+## use critic
+
 
 use Moose;
 use MooseX::ClassAttribute;
@@ -114,7 +117,7 @@ has config => (
 sub _build_config {
     my $self = shift;
 
-    EngSeqBuilder::Config->new_with_config( configfile => $self->configfile );
+    return EngSeqBuilder::Config->new_with_config( configfile => $self->configfile );
 }
 
 has append_seq_length => (
@@ -153,7 +156,7 @@ has schema => (
 sub _build_schema {
     my $self = shift;
 
-    EngSeqBuilder::Schema->connect( $self->config->db_connect_params );
+    return EngSeqBuilder::Schema->connect( $self->config->db_connect_params );
 }
 
 has max_vector_seq_length => (
@@ -163,15 +166,15 @@ has max_vector_seq_length => (
 );
 
 sub _build_max_vector_seq_length {
-    shift->config->max_vector_seq_length;
+    return shift->config->max_vector_seq_length;
 }
 
 with qw( MooseX::Log::Log4perl EngSeqBuilder::Rfetch );
 
 sub list_seqs {
-    my $self = shift;
+    my ( $self, @args ) = @_;
 
-    my %params = validated_hash( \@_, type => { isa => 'Str', optional => 1 } );
+    my %params = validated_hash( \@args, type => { isa => 'Str', optional => 1 } );
 
     my $rs;
 
@@ -182,14 +185,14 @@ sub list_seqs {
         $rs = $self->_schema->resultset( 'EngSeq' )->search( {}, { prefetch => 'type' } );
     }
 
-    return [ map +{ name => $_->name, type => $_->type->name }, $rs->all ];
+    return [ map { +{ name => $_->name, type => $_->type->name } } $rs->all ];
 }
 
 sub list_components {
-    my $self = shift;
+    my ( $self, @args ) = @_;
 
     my %params = validated_hash(
-        \@_,
+        \@args,
         name => { isa => 'Str' },
         type => { isa => 'Str', optional => 1 },
     );
@@ -210,10 +213,10 @@ sub list_components {
 }
 
 sub create_simple_seq {
-    my $self = shift;
+    my ( $self, @args ) = @_;
 
     my %params = validated_hash(
-        \@_,
+        \@args,
         name        => { isa => 'Str' },
         description => { isa => 'Str', default => '' },
         type        => { isa => 'Str' },
@@ -237,10 +240,10 @@ sub create_simple_seq {
 }
 
 sub create_compound_seq {
-    my $self = shift;
+    my ( $self, @args ) = @_;
 
     my %params = validated_hash(
-        \@_,
+        \@args,
         name              => { isa => 'Str' },
         description       => { isa => 'Str', default => '' },
         type              => { isa => 'Str' },
@@ -283,6 +286,7 @@ sub create_compound_seq {
     return $bio_seq;
 }
 
+## no critic(RequireFinalReturn)
 sub _fetch_seq {
     my ( $self, $name, $type ) = @_;
     my $eng_seq_rs;
@@ -311,12 +315,13 @@ sub _fetch_seq {
             $name, $type ? $type : 'ANY' );
     }
 }
+## use critic
 
 sub fetch_seq {
-    my $self = shift;
+    my ( $self, @args ) = @_;
 
     my %params = validated_hash(
-        \@_,
+        \@args,
         name               => { isa => 'Str' },
         include_transcript => { isa => 'Str', optional => 1 },
         type               => { isa => 'Str', optional => 1 },
@@ -326,10 +331,10 @@ sub fetch_seq {
 }
 
 sub delete_seq {
-    my $self = shift;
+    my ( $self, @args ) = @_;
 
     my %params = validated_hash(
-        \@_,
+        \@args,
         name => { isa => 'Str' },
         type => { isa => 'Str', optional => 1 },
     );
@@ -351,13 +356,15 @@ sub delete_seq {
             $eng_seq->delete;
         }
     );
+
+    return;
 }
 
 sub conditional_vector_seq {
-    my $self = shift;
+    my ( $self, @args ) = @_;
 
     my %params = validated_hash(
-        \@_,
+        \@args,
         $self->param_spec(
             qw( chromosome
                 strand
@@ -424,14 +431,14 @@ sub conditional_vector_seq {
         )
     );
 
-    $self->apply_recombinase( $seq, $params{ recombinase } );
+    return $self->apply_recombinase( $seq, $params{ recombinase } );
 }
 
 sub _ins_del_vector_seq {
-    my $self = shift;
+    my ( $self, @args ) = @_;
 
     my %params = validated_hash(
-        \@_,
+        \@args,
         $self->param_spec(
             qw( chromosome
                 strand
@@ -483,24 +490,24 @@ sub _ins_del_vector_seq {
         )
     );
 
-    $self->apply_recombinase( $seq, $params{ recombinase } );
+    return $self->apply_recombinase( $seq, $params{ recombinase } );
 }
 
 sub insertion_vector_seq {
-    my $self = shift;
-    $self->_ins_del_vector_seq( @_ );
+    my ( $self, @args ) = @_;
+    return $self->_ins_del_vector_seq( @args );
 }
 
 sub deletion_vector_seq {
-    my $self = shift;
-    $self->_ins_del_vector_seq( @_ );
+    my ( $self, @args ) = @_;
+    return $self->_ins_del_vector_seq( @args );
 }
 
 sub conditional_allele_seq {
-    my $self = shift;
+    my ( $self, @args ) = @_;
 
     my %params = validated_hash(
-        \@_,
+        \@args,
         $self->param_spec(
             qw( chromosome
                 strand
@@ -546,14 +553,14 @@ sub conditional_allele_seq {
         $self->_get_allele_three_arm_seq( $rfetch_params, \%params ),
     );
 
-    $self->apply_recombinase( $seq, $params{ recombinase } );
+    return $self->apply_recombinase( $seq, $params{ recombinase } );
 }
 
 sub targeted_trap_allele_seq {
-    my $self = shift;
+    my ( $self, @args ) = @_;
 
     my %params = validated_hash(
-        \@_,
+        \@args,
         $self->param_spec(
             qw( chromosome
                 strand
@@ -623,17 +630,17 @@ sub targeted_trap_allele_seq {
         $self->_get_allele_three_arm_seq( $rfetch_params, \%params ),
     );
 
-    $self->apply_recombinase( $seq, $params{ recombinase } );
+    return $self->apply_recombinase( $seq, $params{ recombinase } );
 }
 
 sub insertion_allele_seq {
-    my $self = shift;
-    $self->_ins_del_allele_seq( @_ );
+    my ( $self, @args ) = @_;
+    return $self->_ins_del_allele_seq( @args );
 }
 
 sub deletion_allele_seq {
-    my $self = shift;
-    $self->_ins_del_allele_seq( @_ );
+    my ( $self, @args ) = @_;
+    return $self->_ins_del_allele_seq( @args );
 }
 
 sub apply_recombinase {
@@ -652,10 +659,10 @@ sub apply_recombinase {
 }
 
 sub _ins_del_allele_seq {
-    my $self = shift;
+    my ( $self, @args ) = @_;
 
     my %params = validated_hash(
-        \@_,
+        \@args,
         $self->param_spec(
             qw( chromosome
                 strand
@@ -686,7 +693,7 @@ sub _ins_del_allele_seq {
         $self->_get_allele_three_arm_seq( $rfetch_params, \%params ),
     );
 
-    $self->apply_recombinase( $seq, $params{ recombinase } );
+    return $self->apply_recombinase( $seq, $params{ recombinase } );
 }
 
 sub _get_allele_five_arm_seq {
@@ -804,6 +811,8 @@ sub _check_seq_length {
         EngSeqBuilder::Exception->throw( sprintf 'Sequence length (%d) exceeds maximum permitted (%d)',
             $length, $self->max_vector_seq_length );
     }
+
+    return;
 }
 
 sub _build_rfetch_params {
@@ -862,16 +871,20 @@ sub _get_seq_annotations {
         }
     }
 
-    my $cassette = Bio::Annotation::Comment->new( -text => 'cassette: ' . $cassette_name )
-        if $cassette_name;
-    my $design = Bio::Annotation::Comment->new( -text => 'design_id: ' . $params->{ design_id } )
-        if $params->{ design_id };
-    my $backbone = Bio::Annotation::Comment->new( -text => 'backbone: ' . $params->{ backbone }->{ name } )
-        if $params->{ backbone };
+    if ( $cassette_name ) {
+        my $cassette = Bio::Annotation::Comment->new( -text => 'cassette: ' . $cassette_name );
+        $annotation_collection->add_Annotation( 'comment', $cassette );
+    }
 
-    $annotation_collection->add_Annotation( 'comment', $cassette ) if $cassette;
-    $annotation_collection->add_Annotation( 'comment', $design )   if $design;
-    $annotation_collection->add_Annotation( 'comment', $backbone ) if $backbone;
+    if ( $params->{design_id} ) {
+        my $design = Bio::Annotation::Comment->new( -text => 'design_id: ' . $params->{ design_id } );
+        $annotation_collection->add_Annotation( 'comment', $design );
+    }
+
+    if ( $params->{backbone} ) {
+        my $backbone = Bio::Annotation::Comment->new( -text => 'backbone: ' . $params->{ backbone }->{ name } );
+        $annotation_collection->add_Annotation( 'comment', $backbone );
+    }
 
     return $annotation_collection;
 }

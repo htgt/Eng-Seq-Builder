@@ -13,6 +13,7 @@ my %WriteMakefileArgs = (
   "AUTHOR" => "Ray Miller, Sajith Perera",
   "BUILD_REQUIRES" => {
     "Class::Data::Inheritable" => 0,
+    "English" => 0,
     "File::Find" => 0,
     "File::Temp" => 0,
     "FindBin" => 0,
@@ -74,7 +75,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.004",
+  "VERSION" => "0.005",
   "test" => {
     "TESTS" => "t/*.t"
   }
