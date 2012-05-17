@@ -75,6 +75,14 @@ sql/schema.sql
 t/00-compile.t
 t/05-compound-seq.t
 t/10-eng-seq-builder.t
+t/20-site-specific-recombination.t
 t/author-critic.t
 t/lib/MyTest/EngSeqBuilder.pm
 t/release-no-smart-comments.t
+t/test_files/five.gbk
+t/test_files/four.gbk
+t/test_files/one.gbk
+t/test_files/seven.gbk
+t/test_files/six.gbk
+t/test_files/three.gbk
+t/test_files/two.gbk

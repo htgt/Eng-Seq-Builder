@@ -1,7 +1,7 @@
 package EngSeqBuilder::CLI::Command::LoadBackbone;
 ## no critic(RequireUseStrict,RequireUseWarnings)
 {
-    $EngSeqBuilder::CLI::Command::LoadBackbone::VERSION = '0.005';
+    $EngSeqBuilder::CLI::Command::LoadBackbone::VERSION = '0.006';
 }
 ## use critic
 

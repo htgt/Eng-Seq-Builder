@@ -1,7 +1,7 @@
 package EngSeqBuilder::CLI::Command::LoadComponent;
 ## no critic(RequireUseStrict,RequireUseWarnings)
 {
-    $EngSeqBuilder::CLI::Command::LoadComponent::VERSION = '0.005';
+    $EngSeqBuilder::CLI::Command::LoadComponent::VERSION = '0.006';
 }
 ## use critic
 
