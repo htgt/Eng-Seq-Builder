@@ -1,5 +1,9 @@
 {{$NEXT}}
 
+0.006     2012-05-17 11:40:09 Europe/London
+
+        Implement apply_dre
+
 0.005     2012-05-01 16:33:20 Europe/London
 
 	Address various issues flagged by Perl::Critic.
