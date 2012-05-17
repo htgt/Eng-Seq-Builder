@@ -3,7 +3,7 @@ package EngSeqBuilder::SiteSpecificRecombination;
 use strict;
 use warnings FATAL => 'all';
 
-use Sub::Exporter -setup => { exports => [ qw( apply_recombinase apply_cre apply_flp ) ] };
+use Sub::Exporter -setup => { exports => [ qw( apply_recombinase apply_cre apply_flp apply_dre) ] };
 
 use Bio::Seq;
 use Bio::SeqUtils;
@@ -15,7 +15,8 @@ use Carp qw( confess );
 
 const my %SSR_TARGET_SEQS => (
     LOXP => 'ATAACTTCGTATAGCATACATTATACGAAGTTAT',
-    FRT  => 'GAAGTTCCTATTCCGAAGTTCCTATTCTCTAGAAAGTATAGGAACTTC'
+    FRT  => 'GAAGTTCCTATTCCGAAGTTCCTATTCTCTAGAAAGTATAGGAACTTC',
+    ROX  => 'TAACTTTAAATAATTGGCATTATTTAAAGTTA'
 );
 
 const my @ANNOTATIONS => ( 'display_id', 'species', 'desc', 'is_circular', );
@@ -25,6 +26,10 @@ sub apply_recombinase {
 
     if ( $recombinase eq 'cre' ) {
         return apply_cre( $seq );
+    }
+
+    if ( $recombinase eq 'dre' ) {
+        return apply_dre( $seq );
     }
 
     if ( $recombinase eq 'flp' ) {
@@ -39,11 +44,15 @@ sub apply_cre {
 
     DEBUG( 'apply_cre' );
 
-    my $loxps = _find_ssr_target( $seq, 'LOXP' );
+    return apply_specified_recombinase( $seq, 'LOXP' );
+}
 
-    my $modified_seq = _recombinate_sequence( $loxps, $seq );
+sub apply_dre {
+    my $seq = shift;
 
-    return _clean_sequence( $modified_seq, $seq );
+    DEBUG( 'apply_dre' );
+
+    return apply_specified_recombinase( $seq, 'ROX' );
 }
 
 sub apply_flp {
@@ -51,9 +60,15 @@ sub apply_flp {
 
     DEBUG( 'apply_flp' );
 
-    my $frts = _find_ssr_target( $seq, 'FRT' );
+    return apply_specified_recombinase( $seq, 'FRT' );
+}
 
-    my $modified_seq = _recombinate_sequence( $frts, $seq );
+sub apply_specified_recombinase{
+    my ( $seq, $target ) = @_;
+
+    my $site = _find_ssr_target( $seq, $target);
+
+    my $modified_seq = _recombinate_sequence( $site, $seq );
 
     return _clean_sequence( $modified_seq, $seq );
 }
@@ -102,7 +117,7 @@ sub _recombinate_sequence {
 
     Bio::SeqUtils->cat(
         $modified_seq,
-        Bio::SeqUtils->trunc_with_features( $seq, 1,                 $first_site->start - 1 ),
+        Bio::SeqUtils->trunc_with_features( $seq, 1, $first_site->start - 1 ),
         Bio::SeqUtils->trunc_with_features( $seq, $last_site->start, $seq->length )
     );
 
