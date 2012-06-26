@@ -19,6 +19,7 @@ use List::MoreUtils qw( any );
 use Data::Dump qw( pp );
 use Try::Tiny;
 use Const::Fast;
+use DBIx::Connector;
 use namespace::autoclean;
 
 const my $MOUSE_BIO_SPECIES => Bio::Species->new(
@@ -147,10 +148,20 @@ has schema => (
     handles    => [ 'txn_do', 'txn_rollback' ]
 );
 
-sub _build_schema {
-    my $self = shift;
+{
+    my %connector_for;
+    
+    sub _build_schema {
+        my $self = shift;
 
-    return EngSeqBuilder::Schema->connect( $self->config->db_connect_params );
+        my ( $dsn, $user, $pass, $attr ) = $self->config->db_connect_params;
+
+        if ( ! $connector_for{$dsn}{$user} ) {
+            $connector_for{$dsn}{$user} = DBIx::Connector->new( $dsn, $user, $pass, $attr );
+        }
+
+        return EngSeqBuilder::Schema->connect( sub { $connector_for{$dsn}{$user}->dbh } );
+    }
 }
 
 has max_vector_seq_length => (
