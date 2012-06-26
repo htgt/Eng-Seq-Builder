@@ -150,7 +150,7 @@ has schema => (
 
 {
     my %connector_for;
-    
+
     sub _build_schema {
         my $self = shift;
 
