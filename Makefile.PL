@@ -49,6 +49,7 @@ my %WriteMakefileArgs = (
     "Const::Fast" => 0,
     "DBIx::Class::Core" => 0,
     "DBIx::Class::Schema" => 0,
+    "DBIx::Connector" => 0,
     "Data::Dump" => 0,
     "Hash::MoreUtils" => 0,
     "List::MoreUtils" => 0,
@@ -75,7 +76,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.006",
+  "VERSION" => "0.007",
   "test" => {
     "TESTS" => "t/*.t"
   }

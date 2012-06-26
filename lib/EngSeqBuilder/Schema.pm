@@ -1,7 +1,7 @@
 package EngSeqBuilder::Schema;
 ## no critic(RequireUseStrict,RequireUseWarnings)
 {
-    $EngSeqBuilder::Schema::VERSION = '0.006';
+    $EngSeqBuilder::Schema::VERSION = '0.007';
 }
 ## use critic
 

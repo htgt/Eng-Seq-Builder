@@ -39,6 +39,7 @@ requires:
   Const::Fast: 0
   DBIx::Class::Core: 0
   DBIx::Class::Schema: 0
+  DBIx::Connector: 0
   Data::Dump: 0
   Hash::MoreUtils: 0
   List::MoreUtils: 0
@@ -64,4 +65,4 @@ requires:
   namespace::autoclean: 0
   strict: 0
   warnings: 0
-version: 0.006
+version: 0.007
