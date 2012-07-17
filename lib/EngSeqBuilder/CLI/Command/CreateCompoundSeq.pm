@@ -1,7 +1,7 @@
 package EngSeqBuilder::CLI::Command::CreateCompoundSeq;
 ## no critic(RequireUseStrict,RequireUseWarnings)
 {
-    $EngSeqBuilder::CLI::Command::CreateCompoundSeq::VERSION = '0.007';
+    $EngSeqBuilder::CLI::Command::CreateCompoundSeq::VERSION = '0.008';
 }
 ## use critic
 

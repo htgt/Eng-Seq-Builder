@@ -1,7 +1,7 @@
 package EngSeqBuilder::SiteSpecificRecombination;
 ## no critic(RequireUseStrict,RequireUseWarnings)
 {
-    $EngSeqBuilder::SiteSpecificRecombination::VERSION = '0.007';
+    $EngSeqBuilder::SiteSpecificRecombination::VERSION = '0.008';
 }
 ## use critic
 

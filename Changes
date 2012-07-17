@@ -1,3 +1,9 @@
+0.008     2012-07-17 16:14:47 Europe/London
+
+        Species and assembly should be passed in parameters to sequence generation functions, not the EngSeqBuilder constructor.
+        Default to mouse/NCBIM37 when species/assembly parameters are not specified.
+        Add Bio::Species for human.
+
 0.007     2012-06-26 10:21:50 Europe/London
 
 0.006     2012-05-17 11:40:09 Europe/London

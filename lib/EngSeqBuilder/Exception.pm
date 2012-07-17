@@ -1,7 +1,7 @@
 package EngSeqBuilder::Exception;
 ## no critic(RequireUseStrict,RequireUseWarnings)
 {
-    $EngSeqBuilder::Exception::VERSION = '0.007';
+    $EngSeqBuilder::Exception::VERSION = '0.008';
 }
 ## use critic
 

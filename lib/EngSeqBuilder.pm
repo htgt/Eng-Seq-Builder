@@ -1,7 +1,7 @@
 package EngSeqBuilder;
 ## no critic(RequireUseStrict,RequireUseWarnings)
 {
-    $EngSeqBuilder::VERSION = '0.007';
+    $EngSeqBuilder::VERSION = '0.008';
 }
 ## use critic
 
@@ -14,7 +14,7 @@ use EngSeqBuilder::Config;
 use EngSeqBuilder::Exception;
 use EngSeqBuilder::Schema;
 use EngSeqBuilder::SiteSpecificRecombination;
-use EngSeqBuilder::Types qw( Strand );
+use EngSeqBuilder::Types qw( Strand Species );
 use Bio::Seq;
 use Bio::SeqUtils;
 use Bio::Species;
@@ -28,13 +28,33 @@ use Const::Fast;
 use DBIx::Connector;
 use namespace::autoclean;
 
-const my $MOUSE_BIO_SPECIES => Bio::Species->new(
-    -classification => [
-        'Mus musculus',
-        reverse qw( Eukaryota Metazoa Chordata Craniata Vertebrata Euteleostomi
-            Mammalia Eutheria Euarchontoglires Glires Rodentia
-            Sciurognathi Muroidea Muridae Murinae Mus )
-    ]
+const my $DEFAULT_SPECIES => 'mouse';
+
+const my %BIO_SPECIES_FOR => (
+    mouse => Bio::Species->new(
+        -classification => [
+            'Mus musculus',
+            reverse qw( Eukaryota Metazoa Chordata Craniata Vertebrata Euteleostomi
+                        Mammalia Eutheria Euarchontoglires Glires Rodentia
+                        Sciurognathi Muroidea Muridae Murinae Mus )
+        ]
+    ),
+    human => Bio::Species->new(
+        -classification => [
+            'Homo sapiens',
+            reverse qw( Eukaryota Opisthokonta Metazoa Eumetazoa Bilateria Coelomata
+                        Deuterostomia Chordata Craniata Vertebrata Gnathostomata
+                        Teleostomi Euteleostomi Sarcopterygii Tetrapoda  Amniota
+                        Mammalia Theria Eutheria Euarchontoglires Primates Haplorrhini
+                        Simiiformes Catarrhini Hominoidea Hominidae Homininae Homo
+                  )
+        ]
+    )
+);
+
+const my %ASSEMBLY_FOR => (
+    mouse => 'NCBIM37',
+    human => 'GRCh37'
 );
 
 class_has parameter_types => (
@@ -66,7 +86,9 @@ sub _build_parameter_types {
         display_id          => 'Str',
         description         => 'Str',
         transcript          => 'Str',
-        recombinase         => 'ArrayRef'
+        recombinase         => 'ArrayRef',
+        species             => Species,
+        assembly            => 'Str',
     );
 
     return \%parameter_types;
@@ -80,6 +102,35 @@ sub param_type {
     }
 
     return $self->param_type_for( $param_name );
+}
+
+class_has parameter_defaults => (
+    isa        => 'HashRef',
+    lazy_build => 1,
+    traits     => [ 'Hash' ],
+    handles    => {
+        has_param_default => 'exists',
+        param_default_for => 'get'
+    }
+);
+
+sub _build_parameter_defaults {
+
+    const my %parameter_defaults => (
+        species => $DEFAULT_SPECIES,
+    );
+
+    return \%parameter_defaults;
+}
+
+sub param_default {
+    my ( $self, $param_name ) = @_;
+
+    if ( $self->has_param_default( $param_name ) ) {
+        return ( default => $self->param_default_for( $param_name ) );
+    }
+
+    return;
 }
 
 # param_spec() takes a list of parameter names and returns a
@@ -96,7 +147,7 @@ sub param_spec {
     for my $param_name ( @params ) {
         my $optional = $param_name =~ s/\*$// ? 1 : 0;
         my $type = $self->param_type( $param_name );
-        push @param_spec, $param_name => { isa => $type, optional => $optional };
+        push @param_spec, $param_name => { isa => $type, optional => $optional, $self->param_default( $param_name ) };
     }
 
     return @param_spec;
@@ -125,26 +176,6 @@ has append_seq_length => (
     is      => 'ro',
     isa     => 'Int',
     default => 15050,
-);
-
-has species => (
-    is       => 'ro',
-    isa      => 'Str',
-    required => 1,
-    default  => 'mouse',
-);
-
-has bio_species => (
-    is      => 'ro',
-    isa     => 'Bio::Species',
-    default => sub {$MOUSE_BIO_SPECIES},
-);
-
-has assembly => (
-    is       => 'ro',
-    isa      => 'Str',
-    required => 1,
-    default  => 'NCBIM37',
 );
 
 has schema => (
@@ -181,6 +212,24 @@ sub _build_max_vector_seq_length {
 }
 
 with qw( MooseX::Log::Log4perl EngSeqBuilder::Rfetch );
+
+sub bio_species_for {
+    my ( $self, $species ) = @_;
+
+    EngSeqBuilder::Exception->throw( 'No Bio::Species configured for ' . $species )
+            unless exists $BIO_SPECIES_FOR{ lc $species };
+
+    return $BIO_SPECIES_FOR{ lc $species };
+}
+
+sub assembly_for {
+    my ( $self, $species ) = @_;
+
+    EngSeqBuilder::Exception->throw( 'No assembly configured for ' . $species )
+            unless exists $ASSEMBLY_FOR{ lc $species };
+
+    return $ASSEMBLY_FOR{ lc $species };
+}
 
 sub list_seqs {
     my ( $self, @args ) = @_;
@@ -393,6 +442,8 @@ sub conditional_vector_seq {
                 transcript*
                 description*
                 recombinase*
+                species*
+                assembly*
                 )
         )
     );
@@ -464,6 +515,8 @@ sub _ins_del_vector_seq {
                 transcript*
                 description*
                 recombinase*
+                species*
+                assembly*
                 )
         )
     );
@@ -535,6 +588,8 @@ sub conditional_allele_seq {
                 transcript*
                 description*
                 recombinase*
+                species*
+                assembly*
                 )
         )
     );
@@ -587,6 +642,8 @@ sub targeted_trap_allele_seq {
                 transcript*
                 description*
                 recombinase*
+                species*
+                assembly*
                 )
         )
     );
@@ -687,6 +744,8 @@ sub _ins_del_allele_seq {
                 transcript*
                 description*
                 recombinase*
+                species*
+                assembly*
                 )
         )
     );
@@ -841,8 +900,8 @@ sub _build_rfetch_params {
     $self->_check_seq_length( $params );
 
     my @rfetch_params = (
-        species           => $self->species,
-        version           => $self->assembly,
+        species           => $params->{ species },
+        version           => ( $params->{ assembly } || $self->assembly_for( $params->{ species } ) ),
         seq_region_name   => $params->{ chromosome },
         seq_region_strand => $params->{ strand },
     );
@@ -858,7 +917,7 @@ sub _initialise_bio_seq {
 
     $seq->display_id( $params->{ display_id } || 'synthetic_sequence' );
     $seq->desc( $params->{ description } ) if $params->{ description };
-    $seq->species( $self->bio_species ) if $self->bio_species;
+    $seq->species( $self->bio_species_for( $params->{species} ) );
 
     my $annotations = $self->_get_seq_annotations( $params );
     $seq->annotation( $annotations ) if $annotations;
