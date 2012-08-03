@@ -925,7 +925,7 @@ sub _get_seq_annotations {
     my $annotation_collection = Bio::Annotation::Collection->new;
 
     my $cassette_name;
-    for my $pname ( qw( u_insertion d_insertion ) ) {
+    for my $pname ( qw( u_insertion d_insertion insertion ) ) {
         if ( $params->{ $pname } ) {
             my $s = $self->_fetch_seq( @{ $params->{ $pname } }{ qw( name ) } );
             if ( $s->type->name =~ m/cassette/ ) {
