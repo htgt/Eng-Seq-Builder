@@ -233,7 +233,7 @@ sub list_seqs {
     my $rs;
 
     if ( $params{ type } ) {
-        $rs = $self->_schema->resultset( 'EngSeq' )->search( { 'type.name' => $params{ type } }, { join => 'type' } );
+        $rs = $self->_schema->resultset( 'EngSeq' )->search( { 'type.name' => $params{ type } }, { join => 'type', prefetch => 'type' } );
     }
     else {
         $rs = $self->_schema->resultset( 'EngSeq' )->search( {}, { prefetch => 'type' } );
