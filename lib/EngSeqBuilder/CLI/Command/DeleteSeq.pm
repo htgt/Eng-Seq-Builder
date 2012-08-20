@@ -1,7 +1,7 @@
 package EngSeqBuilder::CLI::Command::DeleteSeq;
 ## no critic(RequireUseStrict,RequireUseWarnings)
 {
-    $EngSeqBuilder::CLI::Command::DeleteSeq::VERSION = '0.008';
+    $EngSeqBuilder::CLI::Command::DeleteSeq::VERSION = '0.009';
 }
 ## use critic
 

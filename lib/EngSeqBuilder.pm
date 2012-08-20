@@ -1,7 +1,7 @@
 package EngSeqBuilder;
 ## no critic(RequireUseStrict,RequireUseWarnings)
 {
-    $EngSeqBuilder::VERSION = '0.008';
+    $EngSeqBuilder::VERSION = '0.009';
 }
 ## use critic
 
@@ -239,7 +239,7 @@ sub list_seqs {
     my $rs;
 
     if ( $params{ type } ) {
-        $rs = $self->_schema->resultset( 'EngSeq' )->search( { 'type.name' => $params{ type } }, { join => 'type' } );
+        $rs = $self->_schema->resultset( 'EngSeq' )->search( { 'type.name' => $params{ type } }, { join => 'type', prefetch => 'type' } );
     }
     else {
         $rs = $self->_schema->resultset( 'EngSeq' )->search( {}, { prefetch => 'type' } );
@@ -931,7 +931,7 @@ sub _get_seq_annotations {
     my $annotation_collection = Bio::Annotation::Collection->new;
 
     my $cassette_name;
-    for my $pname ( qw( u_insertion d_insertion ) ) {
+    for my $pname ( qw( u_insertion d_insertion insertion ) ) {
         if ( $params->{ $pname } ) {
             my $s = $self->_fetch_seq( @{ $params->{ $pname } }{ qw( name ) } );
             if ( $s->type->name =~ m/cassette/ ) {
