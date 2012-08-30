@@ -1,7 +1,7 @@
 package EngSeqBuilder;
 ## no critic(RequireUseStrict,RequireUseWarnings)
 {
-    $EngSeqBuilder::VERSION = '0.009';
+    $EngSeqBuilder::VERSION = '0.010';
 }
 ## use critic
 
@@ -53,7 +53,7 @@ const my %BIO_SPECIES_FOR => (
 );
 
 const my %ASSEMBLY_FOR => (
-    mouse => 'NCBIM37',
+    mouse => 'GRCm38',
     human => 'GRCh37'
 );
 
