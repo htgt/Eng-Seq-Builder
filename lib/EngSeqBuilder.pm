@@ -47,7 +47,7 @@ const my %BIO_SPECIES_FOR => (
 );
 
 const my %ASSEMBLY_FOR => (
-    mouse => 'NCBIM37',
+    mouse => 'GRCm38',
     human => 'GRCh37'
 );
 
