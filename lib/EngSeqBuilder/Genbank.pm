@@ -65,7 +65,7 @@ has _get_seq_method => (
 
 sub BUILD{
 	my $self = shift;
-	
+
 	if ($self->type eq 'vector'){
 		$self->_get_seq_method('get_vector_seq');
 	}
@@ -76,7 +76,7 @@ sub BUILD{
 		# This should never happen
 		die ("Error: no get_seq method available for ".$self->type);
 	}
-	
+
 	unless (openhandle($self->filehandle)){
 		die("filehandle attribute ".$self->filehandle." is not an open filehandle");
 	}
@@ -84,17 +84,19 @@ sub BUILD{
 
 sub write_genbank{
 	my $self = shift;
-	
+
 	my $design = $self->get_design( $self->design_id );
 
     my $eng_seq_builder = $self->config ? EngSeqBuilder->new( {configfile => $self->config} )
                                         : EngSeqBuilder->new;
-                                         
+
     my $get_seq = $self->_get_seq_method;
     my $seq = $self->$get_seq( $eng_seq_builder, $design );
-    
+
     my $seq_io = Bio::SeqIO->new( -fh => $self->filehandle, -format => 'genbank' );
     $seq_io->write_seq( $seq );
+
+    return;
 }
 
 sub get_vector_seq {
@@ -105,9 +107,9 @@ sub get_vector_seq {
     my %params = (
         $self->get_design_params( { design => $design, backbone => $self->backbone } ),
     );
-    
+
     my $design_type = delete $params{design_type};
-    
+
     my $cassette = {name => $self->cassette};
     my $backbone = {name => $self->backbone};
 
@@ -129,7 +131,7 @@ sub get_vector_seq {
         $params{backbone}  = $backbone;
         return $eng_seq_builder->deletion_vector_seq(%params);
     }
-    
+
     die("Unknown design type $design_type");
 }
 
@@ -139,9 +141,9 @@ sub get_allele_seq {
     my %params = (
         $self->get_design_params( { design => $design, targeted_trap => $self->targeted_trap } ),
     );
-    
+
     my $design_type   = delete $params{design_type};
-    
+
     my $targeted_trap = $self->targeted_trap ? 1 : 0;
     my $cassette = {name => $self->cassette};
 
@@ -228,14 +230,14 @@ sub _create_seq_description {
     my ( $mutation_type, $project_ids, $marker_symbol, $backbone ) = @_;
 
     my $seq_description = 'Mus musculus targeted ';
-    $seq_description .= $mutation_type . ', lacZ-tagged mutant'; 
+    $seq_description .= $mutation_type . ', lacZ-tagged mutant';
     $seq_description .= $backbone ? 'vector' : 'allele';
     $seq_description .= $marker_symbol;
     $seq_description .= ' targeting project(s): ' . $project_ids;
-    
+
     return $seq_description;
 }
 
-1; 
+1;
 
 __END__

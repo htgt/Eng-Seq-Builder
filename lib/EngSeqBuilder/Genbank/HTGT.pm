@@ -15,17 +15,19 @@ has htgt => (
     builder => '_htgt_connect',
 );
 
+## no critic(ProhibitUnusedPrivateSubroutines)
 sub _htgt_connect{
   	return HTGT::DBFactory->connect( 'eucomm_vector' );
 }
+## use critic
 
 sub get_design {
     my ( $self, $design_spec ) = @_;
 
     $design_spec ||= '';
-    
+
     my $design;
-    
+
     if ( $design_spec =~ /^\d+$/ ) {
         $design = $self->htgt->resultset( 'Design' )->find( { design_id => $design_spec } )
             || die "Failed to retrieve design $design_spec\n";
@@ -50,7 +52,6 @@ sub get_design {
     return $design;
 }
 
-###### TIDY THIS UP ######
 sub get_design_projects {
     my ($self, $args) = @_;
     my $design = $args->{design};
@@ -62,8 +63,8 @@ sub get_design_projects {
             { columns  => [qw/project_id/] } );
     }
     else {
-        @projects = $design->projects->search( 
-            { cassette => $args->{cassette} }, 
+        @projects = $design->projects->search(
+            { cassette => $args->{cassette} },
             { columns => [qw/project_id/] } );
     }
 
