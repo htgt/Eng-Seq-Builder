@@ -83,6 +83,8 @@ sub _build_parameter_types {
         recombinase         => 'ArrayRef',
         species             => Species,
         assembly            => 'Str',
+        crispr_id           => 'Int',
+        crispr_seq          => 'Str',
     );
 
     return \%parameter_types;
@@ -844,6 +846,50 @@ sub _get_allele_three_arm_seq {
     return $seq;
 }
 
+sub crispr_vector_seq {
+    my ( $self, @args ) = @_;
+
+    my %params = validated_hash(
+        \@args,
+        $self->param_spec(
+            qw( backbone
+                crispr_seq
+                display_id*
+                crispr_id*
+                description*
+                species*
+                )
+        )
+    );
+
+    $self->log->trace( sub { 'crispr_vector_seq: ' . pp( \%params ) } );
+
+    my $seq = $self->_initialise_bio_seq( \%params );
+
+    my $crispr_seq = Bio::Seq->new(
+        -alphabet => 'dna',
+        -seq      => $params{crispr_seq},
+    );
+    my $crispr_feature = Bio::SeqFeature::Generic->new(
+        -primary => 'misc_feature',
+        -tag     => { note => 'Crispr gRNA' },
+        -strand  => 1,
+        -start   => 1,
+        -end     => length( $params{crispr_seq} ),
+    );
+    confess( 'Unable to add whole_seq_feature to crispr_seq' )
+        unless $crispr_seq->add_SeqFeature( $crispr_feature );
+
+    #TODO check the sequence is okay like this, crispr in first then backbone sp12 Tue 01 Oct 2013 08:39:38 BST
+    Bio::SeqUtils->cat(
+        $seq,
+        $crispr_seq,
+        $self->fetch_seq( %{ $params{ backbone } } ),
+    );
+
+    return $seq;
+}
+
 sub _slice_rel_coord {
     my ( $self, $slice_genomic_start, $slice_genomic_end, $strand, $genomic_coord_start, $genomic_coord_end ) = @_;
 
@@ -943,6 +989,11 @@ sub _get_seq_annotations {
     if ( $params->{design_id} ) {
         my $design = Bio::Annotation::Comment->new( -text => 'design_id: ' . $params->{ design_id } );
         $annotation_collection->add_Annotation( 'comment', $design );
+    }
+
+    if ( $params->{crispr_id} ) {
+        my $crispr = Bio::Annotation::Comment->new( -text => 'crispr_id: ' . $params->{ crispr_id } );
+        $annotation_collection->add_Annotation( 'comment', $crispr );
     }
 
     if ( $params->{backbone} ) {
