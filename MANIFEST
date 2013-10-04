@@ -86,3 +86,11 @@ t/test_files/seven.gbk
 t/test_files/six.gbk
 t/test_files/three.gbk
 t/test_files/two.gbk
+tmp/crispr_backbone.pl
+tmp/crispr_vector.pl
+tmp/crispr_vectors/backbone.gbk
+tmp/crispr_vectors/crispr_vector_U6_BsaI_gRNA.gbk
+tmp/crispr_vectors/empty_vector_U6_BsaI_gRNA.gbk
+tmp/crispr_vectors/expected_crispr_vector.gbk
+tmp/crispr_vectors/generated_crispr_vector.gbk
+tmp/crispr_vectors/new_generate_crispr_vector.gbk
