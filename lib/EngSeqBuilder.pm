@@ -880,14 +880,20 @@ sub crispr_vector_seq {
     confess( 'Unable to add whole_seq_feature to crispr_seq' )
         unless $crispr_seq->add_SeqFeature( $crispr_feature );
 
-    #TODO check the sequence is okay like this, crispr in first then backbone sp12 Tue 01 Oct 2013 08:39:38 BST
     Bio::SeqUtils->cat(
         $seq,
         $crispr_seq,
         $self->fetch_seq( %{ $params{ backbone } } ),
     );
 
-    return $seq;
+    # now split seq in two and rejoin other way around so crispr can be in middle of
+    # the genbank file
+    my $halfway_point = int( $seq->length / 2 );
+    my $new_seq = Bio::SeqUtils->trunc_with_features( $seq, $halfway_point + 1, $seq->length );
+    my $append_seq = Bio::SeqUtils->trunc_with_features( $seq, 1, $halfway_point );
+    Bio::SeqUtils->cat( $new_seq, $append_seq );
+
+    return $new_seq;
 }
 
 sub _slice_rel_coord {
