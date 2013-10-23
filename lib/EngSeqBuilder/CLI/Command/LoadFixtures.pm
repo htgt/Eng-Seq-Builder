@@ -1,7 +1,7 @@
 package EngSeqBuilder::CLI::Command::LoadFixtures;
 ## no critic(RequireUseStrict,RequireUseWarnings)
 {
-    $EngSeqBuilder::CLI::Command::LoadFixtures::VERSION = '0.011';
+    $EngSeqBuilder::CLI::Command::LoadFixtures::VERSION = '0.012';
 }
 ## use critic
 

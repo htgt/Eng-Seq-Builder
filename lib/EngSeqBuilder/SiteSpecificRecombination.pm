@@ -1,7 +1,7 @@
 package EngSeqBuilder::SiteSpecificRecombination;
 ## no critic(RequireUseStrict,RequireUseWarnings)
 {
-    $EngSeqBuilder::SiteSpecificRecombination::VERSION = '0.011';
+    $EngSeqBuilder::SiteSpecificRecombination::VERSION = '0.012';
 }
 ## use critic
 
@@ -9,11 +9,12 @@ package EngSeqBuilder::SiteSpecificRecombination;
 use strict;
 use warnings FATAL => 'all';
 
-use Sub::Exporter -setup => { exports => [ qw( apply_recombinase apply_cre apply_flp apply_dre) ] };
+use Sub::Exporter -setup => { exports => [ qw( apply_recombinase apply_cre apply_flp apply_dre ) ] };
 
 use Bio::Seq;
 use Bio::SeqUtils;
 use Bio::Range;
+use Bio::SeqFeature::Generic;
 use Const::Fast;
 use EngSeqBuilder::Util qw( is_exact_feature clone_bio_seq );
 use Log::Log4perl qw( :easy );
@@ -95,7 +96,62 @@ sub _clean_sequence {
         $modified_seq->annotation->add_Annotation( 'comment', $annotation );
     }
 
-    return $modified_seq;
+
+    return _merge_synthetic_cassette_features( $modified_seq );
+}
+
+# If all ssr targets within the synthetic cassette feature then we end up with
+# 2 synthetic cassette features ( which screws up the image drawing code )
+# Remove both features and create a new one with the appropriate coordiantes.
+sub _merge_synthetic_cassette_features {
+    my ( $seq ) = shift;
+
+    my @features;
+    my @cassettes;
+    for my $feature ( $seq->get_SeqFeatures ) {
+        if ( $feature->primary_tag ne 'misc_feature' ) {
+            push @features, $feature;
+            next;
+        }
+
+        for my $tag ( $feature->get_all_tags() ) {
+            my @values = $feature->get_tag_values($tag);
+            if ( grep { $_ eq 'Synthetic Cassette'  } @values ) {
+                push @cassettes, $feature;
+            }
+            else {
+                push @features, $feature;
+            }
+        }
+    }
+
+    # If there is none or one synthetic cassette feature then there is nothing to do.
+    if ( @cassettes == 1 || @cassettes == 0 ) {
+        return $seq;
+    }
+
+    # if we have 2+ then take the start coordinate of the first feature and the
+    # end coordianate of the last feature and create a new feature
+    my $start = $cassettes[0]->start;
+    my $end = $cassettes[0]->end;
+    for my $cass ( @cassettes ) {
+        $start = $cass->start if $cass->start < $start;
+        $end   = $cass->end   if $cass->end   > $end;
+    }
+
+    push @features,
+        Bio::SeqFeature::Generic->new(
+            -start       => $start,
+            -end         => $end,
+            -strand      => 1,
+            -primary_tag => 'misc_feature',
+            -tag         => { note => 'Synthetic Cassette' }
+        );
+
+    $seq->remove_SeqFeatures;
+    $seq->add_SeqFeature( @features );
+
+    return $seq;
 }
 
 sub _recombinate_sequence {
