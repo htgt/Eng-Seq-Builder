@@ -1,7 +1,7 @@
 package EngSeqBuilder::Rfetch::EnsEMBL;
 ## no critic(RequireUseStrict,RequireUseWarnings)
 {
-    $EngSeqBuilder::Rfetch::EnsEMBL::VERSION = '0.012';
+    $EngSeqBuilder::Rfetch::EnsEMBL::VERSION = '0.013';
 }
 ## use critic
 
@@ -98,10 +98,13 @@ sub _annotate_exons {
     my ( $seq, $slice, $strand, $transcript_id, $targeted )
         = @params{ qw( seq slice seq_region_strand include_transcript targeted ) };
 
-    my $exons = $self->_exons_on_slice( $slice, $strand, $transcript_id );
+    my $transcript = $self->transcript_adaptor->fetch_by_stable_id( $transcript_id )
+        or EngSeqBuilder::Exception->throw( "Failed to retrieve transcript $transcript_id" );
+
+    my $slice_exons = $self->_exons_on_slice( $slice, $transcript );
 
     my $exon_count = 0;
-    for my $exon ( @{ $exons } ) {
+    for my $exon ( @{ $slice_exons } ) {
         $exon_count++;
         my $note = $targeted ? "target exon $exon_count " . $exon->stable_id : $exon->stable_id;
         my ( $exon_start, $exon_end ) = ( $exon->start, $exon->end );
@@ -122,6 +125,9 @@ sub _annotate_exons {
         }
         $note .= " $fragment_type fragment" if $fragment_type;
 
+        # fetch exon rank for current exon, relative to gene canonical transcript, and add it into feature tag
+        my $exon_rank = $self->_get_exon_rank( $exon, $transcript );
+
         my $exon_feature = Bio::SeqFeature::Gene::Exon->new(
             -display_name => $exon->stable_id,
             -start        => $exon_start,
@@ -129,6 +135,7 @@ sub _annotate_exons {
             -strand       => $exon->strand,
             -tag          => {
                 note    => $note,
+                rank    => $exon_rank,
                 db_xref => 'ENSEMBL:' . $exon->stable_id
             }
         );
@@ -141,15 +148,25 @@ sub _annotate_exons {
 }
 
 sub _exons_on_slice {
-    my ( $self, $slice, $strand, $transcript_id ) = @_;
+    my ( $self, $slice, $transcript ) = @_;
     my $exons;
 
-    my $transcript = $self->transcript_adaptor->fetch_by_stable_id( $transcript_id )
-        or EngSeqBuilder::Exception->throw( "Failed to retrieve transcript $transcript_id" );
     my %is_wanted = map { $_->stable_id => 1 } @{ $transcript->get_all_Exons };
     $exons = [ grep { $is_wanted{ $_->stable_id } } @{ $slice->get_all_Exons } ];
 
     return $exons;
+}
+
+sub _get_exon_rank {
+    my ( $self, $exon, $transcript ) = @_;
+
+    my $rank = 1;
+    for my $current_exon ( @{ $transcript->get_all_Exons } ) {
+        return $rank if $current_exon->stable_id eq $exon->stable_id;
+        $rank++;
+    }
+
+    return 0;
 }
 
 __PACKAGE__->meta->make_immutable;

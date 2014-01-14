@@ -1,3 +1,6 @@
+0.013     2014-01-14 11:03:44 Europe/London
+	Added exon feature ranks. Added clear step when creating EnsEMBL registry.
+
 0.012     2013-10-23 15:23:17 Europe/London
 	Fixed bug where dual synthetic cassette features created.
 

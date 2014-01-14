@@ -29,7 +29,8 @@ my %WriteMakefileArgs = (
   },
   "DISTNAME" => "Eng-Seq-Builder",
   "EXE_FILES" => [
-    "bin/eng-seq-builder"
+    "bin/eng-seq-builder",
+    "bin/lims2-genbank.pl"
   ],
   "LICENSE" => "perl",
   "NAME" => "Eng::Seq::Builder",
@@ -51,7 +52,10 @@ my %WriteMakefileArgs = (
     "DBIx::Class::Schema" => 0,
     "DBIx::Connector" => 0,
     "Data::Dump" => 0,
+    "Getopt::Long" => 0,
     "Hash::MoreUtils" => 0,
+    "LIMS2::Model" => 0,
+    "LIMS2::Model::Util::EngSeqParams" => 0,
     "List::MoreUtils" => 0,
     "List::Util" => 0,
     "Log::Log4perl" => 0,
@@ -67,6 +71,7 @@ my %WriteMakefileArgs = (
     "MooseX::Types" => 0,
     "MooseX::Types::Moose" => 0,
     "MooseX::Types::Path::Class" => 0,
+    "Pod::Usage" => 0,
     "Sub::Exporter" => 0,
     "Text::Table" => 0,
     "Throwable::Error" => 0,
@@ -76,7 +81,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.012",
+  "VERSION" => "0.013",
   "test" => {
     "TESTS" => "t/*.t"
   }

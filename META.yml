@@ -41,7 +41,10 @@ requires:
   DBIx::Class::Schema: 0
   DBIx::Connector: 0
   Data::Dump: 0
+  Getopt::Long: 0
   Hash::MoreUtils: 0
+  LIMS2::Model: 0
+  LIMS2::Model::Util::EngSeqParams: 0
   List::MoreUtils: 0
   List::Util: 0
   Log::Log4perl: 0
@@ -57,6 +60,7 @@ requires:
   MooseX::Types: 0
   MooseX::Types::Moose: 0
   MooseX::Types::Path::Class: 0
+  Pod::Usage: 0
   Sub::Exporter: 0
   Text::Table: 0
   Throwable::Error: 0
@@ -65,4 +69,4 @@ requires:
   namespace::autoclean: 0
   strict: 0
   warnings: 0
-version: 0.012
+version: 0.013

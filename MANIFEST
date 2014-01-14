@@ -5,6 +5,7 @@ META.yml
 Makefile.PL
 README
 bin/eng-seq-builder
+bin/lims2-genbank.pl
 fixtures/B1.gbk
 fixtures/B1_cut.gbk
 fixtures/B1_cut_alt.gbk

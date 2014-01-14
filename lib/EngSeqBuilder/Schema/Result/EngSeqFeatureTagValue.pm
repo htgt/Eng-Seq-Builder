@@ -1,7 +1,7 @@
 package EngSeqBuilder::Schema::Result::EngSeqFeatureTagValue;
 ## no critic(RequireUseStrict,RequireUseWarnings)
 {
-    $EngSeqBuilder::Schema::Result::EngSeqFeatureTagValue::VERSION = '0.012';
+    $EngSeqBuilder::Schema::Result::EngSeqFeatureTagValue::VERSION = '0.013';
 }
 ## use critic
 

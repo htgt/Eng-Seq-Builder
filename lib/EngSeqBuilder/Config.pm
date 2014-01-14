@@ -1,7 +1,7 @@
 package EngSeqBuilder::Config;
 ## no critic(RequireUseStrict,RequireUseWarnings)
 {
-    $EngSeqBuilder::Config::VERSION = '0.012';
+    $EngSeqBuilder::Config::VERSION = '0.013';
 }
 ## use critic
 
@@ -135,6 +135,9 @@ sub _build_ensembl_registry {
     }
 
     require Bio::EnsEMBL::Registry;
+
+    # first clear the registry so we don't conflict with other versions e.g. in LIMS2
+    Bio::EnsEMBL::Registry->clear();
 
     Bio::EnsEMBL::Registry->load_registry_from_db( %args );
 
