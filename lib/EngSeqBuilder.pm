@@ -22,6 +22,8 @@ use Const::Fast;
 use DBIx::Connector;
 use namespace::autoclean;
 
+use Data::Dumper; # todo: remove
+
 const my $DEFAULT_SPECIES => 'mouse';
 
 const my %BIO_SPECIES_FOR => (
@@ -653,45 +655,22 @@ sub targeted_trap_allele_seq {
 
     my $seq = $self->_initialise_bio_seq( \%params );
 
-    my ( $loxp_start, $loxp_end );
+    # No critical region and no loxP site for this mutation type
+
+    # modify 3 arm start position to include critical and loxp regions
     if ( $params{ strand } == 1 ) {
-        $loxp_start = $params{ target_region_end } + 1;
-        $loxp_end   = $params{ three_arm_start } - 1;
+        $params{ three_arm_start } = $params{ target_region_start };
     }
-    else {
-        $loxp_start = $params{ three_arm_end } + 1;
-        $loxp_end   = $params{ target_region_start } - 1;
+    elsif ( $params{ strand } == -1 ) {
+        $params{ three_arm_end } = $params{ target_region_end };
     }
 
-    my $loxp;
-    if ( $loxp_end >= $loxp_start ) {
-        $loxp = $self->rfetch_seq(
-            @{ $rfetch_params },
-            seq_region_start => $loxp_start,
-            seq_region_end   => $loxp_end
-        );
-    }
-    else {
-        $loxp = Bio::Seq->new( -alphabet => 'dna', -seq => '' );
-    }
-
+    # merge all the sections together into one
     Bio::SeqUtils->cat(
         $seq,
         $self->_get_allele_five_arm_seq( $rfetch_params, \%params ),
         $self->fetch_seq( %{ $params{ u_insertion } } ),
-        $self->rfetch_seq(
-            @{ $rfetch_params },
-            seq_region_start   => $params{ target_region_start },
-            seq_region_end     => $params{ target_region_end },
-            targeted           => 1,
-            whole_feature_name => Bio::SeqFeature::Generic->new(
-                -primary => 'misc_feature',
-                -tag     => { note => 'Critical Region' },
-                -strand  => 1,
-            ),
-        ),
-        $loxp,
-        $self->_get_allele_three_arm_seq( $rfetch_params, \%params ),
+        $self->_get_allele_three_arm_seq( $rfetch_params, \%params )
     );
 
     return $self->apply_recombinase( $seq, $params{ recombinase } );
