@@ -22,8 +22,6 @@ use Const::Fast;
 use DBIx::Connector;
 use namespace::autoclean;
 
-use Data::Dumper; # todo: remove
-
 const my $DEFAULT_SPECIES => 'mouse';
 
 const my %BIO_SPECIES_FOR => (
