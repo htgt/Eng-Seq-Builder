@@ -1,7 +1,7 @@
 package EngSeqBuilder;
 ## no critic(RequireUseStrict,RequireUseWarnings)
 {
-    $EngSeqBuilder::VERSION = '0.013';
+    $EngSeqBuilder::VERSION = '0.015';
 }
 ## use critic
 
@@ -519,6 +519,8 @@ sub _ins_del_vector_seq {
                 recombinase*
                 species*
                 assembly*
+		target_region_start*
+		target_region_end*
                 )
         )
     );

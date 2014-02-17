@@ -1,7 +1,7 @@
 package EngSeqBuilder::CLI::Command::ListSeqs;
 ## no critic(RequireUseStrict,RequireUseWarnings)
 {
-    $EngSeqBuilder::CLI::Command::ListSeqs::VERSION = '0.013';
+    $EngSeqBuilder::CLI::Command::ListSeqs::VERSION = '0.015';
 }
 ## use critic
 
