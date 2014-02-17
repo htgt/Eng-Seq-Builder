@@ -1,4 +1,10 @@
 package EngSeqBuilder::CLI::Command::ReplaceSeqFeatures;
+## no critic(RequireUseStrict,RequireUseWarnings)
+{
+    $EngSeqBuilder::CLI::Command::ReplaceSeqFeatures::VERSION = '0.014';
+}
+## use critic
+
 
 use Moose;
 use Bio::SeqIO;

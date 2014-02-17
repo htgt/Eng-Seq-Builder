@@ -1,4 +1,10 @@
 package EngSeqBuilder;
+## no critic(RequireUseStrict,RequireUseWarnings)
+{
+    $EngSeqBuilder::VERSION = '0.014';
+}
+## use critic
+
 
 use Moose;
 use MooseX::ClassAttribute;

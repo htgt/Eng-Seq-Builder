@@ -1,4 +1,10 @@
 package EngSeqBuilder::CLI::Command::ListSeqs;
+## no critic(RequireUseStrict,RequireUseWarnings)
+{
+    $EngSeqBuilder::CLI::Command::ListSeqs::VERSION = '0.014';
+}
+## use critic
+
 
 use Moose;
 use Text::Table;

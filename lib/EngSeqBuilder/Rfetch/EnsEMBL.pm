@@ -1,4 +1,10 @@
 package EngSeqBuilder::Rfetch::EnsEMBL;
+## no critic(RequireUseStrict,RequireUseWarnings)
+{
+    $EngSeqBuilder::Rfetch::EnsEMBL::VERSION = '0.014';
+}
+## use critic
+
 
 use Moose;
 use MooseX::Params::Validate;

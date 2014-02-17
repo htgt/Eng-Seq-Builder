@@ -1,4 +1,10 @@
 package EngSeqBuilder::Config;
+## no critic(RequireUseStrict,RequireUseWarnings)
+{
+    $EngSeqBuilder::Config::VERSION = '0.014';
+}
+## use critic
+
 
 use Moose;
 use EngSeqBuilder::Exception;

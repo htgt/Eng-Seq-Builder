@@ -1,4 +1,10 @@
 package EngSeqBuilder::CLI::Command::LoadBackbone;
+## no critic(RequireUseStrict,RequireUseWarnings)
+{
+    $EngSeqBuilder::CLI::Command::LoadBackbone::VERSION = '0.014';
+}
+## use critic
+
 
 use Moose;
 use Bio::SeqIO;

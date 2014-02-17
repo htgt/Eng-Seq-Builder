@@ -1,4 +1,10 @@
 package EngSeqBuilder::CLI::Command;
+## no critic(RequireUseStrict,RequireUseWarnings)
+{
+    $EngSeqBuilder::CLI::Command::VERSION = '0.014';
+}
+## use critic
+
 
 use Moose;
 use MooseX::Types::Path::Class;

@@ -1,4 +1,10 @@
 package EngSeqBuilder::CLI::Command::LoadSeq;
+## no critic(RequireUseStrict,RequireUseWarnings)
+{
+    $EngSeqBuilder::CLI::Command::LoadSeq::VERSION = '0.014';
+}
+## use critic
+
 
 use Moose;
 use Bio::SeqIO;

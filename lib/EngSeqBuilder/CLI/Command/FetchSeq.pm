@@ -1,4 +1,10 @@
 package EngSeqBuilder::CLI::Command::FetchSeq;
+## no critic(RequireUseStrict,RequireUseWarnings)
+{
+    $EngSeqBuilder::CLI::Command::FetchSeq::VERSION = '0.014';
+}
+## use critic
+
 
 use Moose;
 use Bio::SeqIO;

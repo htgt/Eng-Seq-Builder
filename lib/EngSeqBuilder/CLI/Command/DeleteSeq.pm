@@ -1,4 +1,10 @@
 package EngSeqBuilder::CLI::Command::DeleteSeq;
+## no critic(RequireUseStrict,RequireUseWarnings)
+{
+    $EngSeqBuilder::CLI::Command::DeleteSeq::VERSION = '0.014';
+}
+## use critic
+
 
 use Moose;
 use Bio::SeqIO;

@@ -1,4 +1,10 @@
 package EngSeqBuilder::SiteSpecificRecombination;
+## no critic(RequireUseStrict,RequireUseWarnings)
+{
+    $EngSeqBuilder::SiteSpecificRecombination::VERSION = '0.014';
+}
+## use critic
+
 
 use strict;
 use warnings FATAL => 'all';

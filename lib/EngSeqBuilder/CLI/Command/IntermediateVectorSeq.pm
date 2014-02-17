@@ -1,4 +1,10 @@
 package EngSeqBuilder::CLI::Command::IntermediateVectorSeq;
+## no critic(RequireUseStrict,RequireUseWarnings)
+{
+    $EngSeqBuilder::CLI::Command::IntermediateVectorSeq::VERSION = '0.014';
+}
+## use critic
+
 
 use Moose;
 use Bio::SeqIO;

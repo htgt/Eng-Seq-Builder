@@ -1,4 +1,10 @@
 package EngSeqBuilder::Rfetch;
+## no critic(RequireUseStrict,RequireUseWarnings)
+{
+    $EngSeqBuilder::Rfetch::VERSION = '0.014';
+}
+## use critic
+
 
 use Moose::Role;
 use EngSeqBuilder::Exception;

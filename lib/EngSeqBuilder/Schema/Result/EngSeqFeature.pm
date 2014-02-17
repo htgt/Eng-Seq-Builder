@@ -1,4 +1,10 @@
 package EngSeqBuilder::Schema::Result::EngSeqFeature;
+## no critic(RequireUseStrict,RequireUseWarnings)
+{
+    $EngSeqBuilder::Schema::Result::EngSeqFeature::VERSION = '0.014';
+}
+## use critic
+
 
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE

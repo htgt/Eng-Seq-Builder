@@ -1,4 +1,10 @@
 package EngSeqBuilder::Compat;
+## no critic(RequireUseStrict,RequireUseWarnings)
+{
+    $EngSeqBuilder::Compat::VERSION = '0.014';
+}
+## use critic
+
 
 use strict;
 use warnings FATAL => 'all';

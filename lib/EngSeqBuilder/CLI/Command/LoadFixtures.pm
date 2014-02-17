@@ -1,4 +1,10 @@
 package EngSeqBuilder::CLI::Command::LoadFixtures;
+## no critic(RequireUseStrict,RequireUseWarnings)
+{
+    $EngSeqBuilder::CLI::Command::LoadFixtures::VERSION = '0.014';
+}
+## use critic
+
 
 use Moose;
 use MooseX::Types::Path::Class;

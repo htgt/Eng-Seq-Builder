@@ -1,4 +1,10 @@
 package EngSeqBuilder::CLI::Command::CreateCompoundSeq;
+## no critic(RequireUseStrict,RequireUseWarnings)
+{
+    $EngSeqBuilder::CLI::Command::CreateCompoundSeq::VERSION = '0.014';
+}
+## use critic
+
 
 use Moose;
 use EngSeqBuilder::Exception;
