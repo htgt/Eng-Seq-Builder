@@ -513,6 +513,8 @@ sub _ins_del_vector_seq {
                 recombinase*
                 species*
                 assembly*
+		target_region_start*
+		target_region_end*
                 )
         )
     );
