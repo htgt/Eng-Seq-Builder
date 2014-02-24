@@ -1,7 +1,7 @@
 package EngSeqBuilder::CLI::Command::IntermediateVectorSeq;
 ## no critic(RequireUseStrict,RequireUseWarnings)
 {
-    $EngSeqBuilder::CLI::Command::IntermediateVectorSeq::VERSION = '0.015';
+    $EngSeqBuilder::CLI::Command::IntermediateVectorSeq::VERSION = '0.016';
 }
 ## use critic
 

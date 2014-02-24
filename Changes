@@ -1,3 +1,6 @@
+0.016     2014-02-24 09:14:52 Europe/London
+	Modified Targeted Trap code to not include Critical and LoxP regions when they aren't present.
+
 0.015     2014-02-17 16:38:06 Europe/London
 
 0.014     2014-02-17 16:32:24 Europe/London
