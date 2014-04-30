@@ -85,6 +85,7 @@ sub _build_parameter_types {
         assembly            => 'Str',
         crispr_id           => 'Int',
         crispr_seq          => 'Str',
+        is_deletion         => 'Int',
     );
 
     return \%parameter_types;
@@ -721,6 +722,7 @@ sub _ins_del_allele_seq {
                 recombinase*
                 species*
                 assembly*
+                is_deletion*
                 )
         )
     );
@@ -734,11 +736,120 @@ sub _ins_del_allele_seq {
     Bio::SeqUtils->cat(
         $seq,
         $self->_get_allele_five_arm_seq( $rfetch_params, \%params ),
-        $self->fetch_seq( %{ $params{ insertion } } ),
+        $self->fetch_seq( %{ $params{ 'insertion' } } ),
         $self->_get_allele_three_arm_seq( $rfetch_params, \%params ),
     );
 
+    # add a deletion feature if applicable
+    if( exists $params{ 'is_deletion' } && $params{ 'is_deletion' } == 1 ) {
+        $self->_add_deletion_feature( $seq, \%params, \@{ $rfetch_params } );
+    }
+
     return $self->apply_recombinase( $seq, $params{ recombinase } );
+}
+
+sub _add_deletion_feature {
+    my ( $self, $seq, $params, $rfetch_params ) = @_;
+
+    #  fetch the deleted sequence to determine what has been lost
+    my $del_seq = $self->_initialise_bio_seq( $params );
+    my ( $del_seq_start, $del_seq_end );
+
+    if ( $params->{ 'strand' } == 1 ) {
+        $del_seq_start = $params->{ 'five_arm_end' } + 1;
+        $del_seq_end   = $params->{ 'three_arm_start' } - 1;
+    }
+    else {
+        $del_seq_start = $params->{ 'three_arm_end' } + 1;
+        $del_seq_end   = $params->{ 'five_arm_start' } - 1;
+    }
+
+    Bio::SeqUtils->cat(
+        $del_seq,
+        $self->rfetch_seq(
+            @{ $rfetch_params },
+            'seq_region_start' => $del_seq_start,
+            'seq_region_end'   => $del_seq_end,
+        ),
+    );
+
+    # calculate basepairs deleted
+    my $length_del_bp = $del_seq_end - $del_seq_start;
+    my $note          = 'deletion';
+    my $del_bp        = $length_del_bp . 'bp';
+
+    # add deleted exons to note
+    my $del_exons = $self->_create_deleted_exons_tag( $del_seq );
+    
+    # identify the location of the deletion at the end of the synthetic cassette
+    my @seq_features  = $seq->get_SeqFeatures();
+    my $synth_cassette_end = 0;
+    foreach my $seq_feat ( @seq_features ) {
+        if ( $seq_feat->primary_tag eq 'misc_feature' ) {
+            my @note_array = $seq_feat->get_tag_values('note');
+            if ( scalar @note_array > 0 && $note_array[0] eq 'Synthetic Cassette' ) {            
+                $synth_cassette_end = $seq_feat->end;
+                last;
+            }
+        }
+    }
+
+    # add a new deletion feature to the main sequence
+    my $deletion_feat = Bio::SeqFeature::Generic->new(
+        -strand      => 1,
+        -primary_tag => 'misc_feature',
+        -tag         => { 'note'      => $note,
+                          'del_bp'    => $del_bp,
+                          'del_exons' => $del_exons,
+                        },
+        -start       => $synth_cassette_end,
+        -end         => $synth_cassette_end + 1,
+    );
+    $seq->add_SeqFeature( $deletion_feat );
+    
+    return;
+}
+
+sub _create_deleted_exons_tag {
+    my ( $self, $del_seq ) = @_;
+
+    # extract number of (canonical) exons from deleted sequence (if any)
+    my $num_exons     = 0;
+    my $exon_rank_min = 0;
+    my $exon_rank_max = 0;
+
+    my @del_features  = $del_seq->get_SeqFeatures();
+    foreach my $feat ( @del_features ) {
+        if( $feat->primary_tag eq 'exon' ) {
+            $num_exons++;
+            my @exon_rank_array = $feat->get_tag_values('rank');
+            # fetch rank number from feature
+            if ( scalar @exon_rank_array > 0 && $exon_rank_array[0] > 0 ) {
+
+                my $rank = $exon_rank_array[0];
+
+                if ( $exon_rank_min == 0 ) { $exon_rank_min = $rank; }
+                if ( $exon_rank_max == 0 ) { $exon_rank_max = $rank; }
+
+                if ( $rank < $exon_rank_min ) { $exon_rank_min = $rank; }
+                if ( $rank > $exon_rank_max ) { $exon_rank_max = $rank; }
+            }
+        }
+    }
+
+    # add exons suffix as applicable
+    my $exons_note;
+    if ( $num_exons == 0 ) {
+        $exons_note = 'No Exons';
+    }
+    elsif ( $num_exons == 1 ) {
+        $exons_note = 'Exon ' . $exon_rank_min;
+    }
+    else {
+        $exons_note = "Exons " . $exon_rank_min . '-' . $exon_rank_max;
+    }
+
+    return $exons_note;
 }
 
 sub _get_allele_five_arm_seq {
