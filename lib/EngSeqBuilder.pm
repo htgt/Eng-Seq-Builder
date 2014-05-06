@@ -22,6 +22,8 @@ use Const::Fast;
 use DBIx::Connector;
 use namespace::autoclean;
 
+use Data::Dumper; # TODO: remove
+
 const my $DEFAULT_SPECIES => 'mouse';
 
 const my %BIO_SPECIES_FOR => (
@@ -514,8 +516,9 @@ sub _ins_del_vector_seq {
                 recombinase*
                 species*
                 assembly*
-		target_region_start*
-		target_region_end*
+        		target_region_start*
+        		target_region_end*
+                is_deletion*
                 )
         )
     );
@@ -552,6 +555,11 @@ sub _ins_del_vector_seq {
             ),
         )
     );
+
+    # add a deletion feature if applicable
+    if( exists $params{ 'is_deletion' } && $params{ 'is_deletion' } == 1 ) {
+        $self->_add_deletion_feature( $seq, \%params, \@{ $rfetch_params } );
+    }
 
     return $self->apply_recombinase( $seq, $params{ recombinase } );
 }
@@ -764,17 +772,30 @@ sub _add_deletion_feature {
         $del_seq_end   = $params->{ 'five_arm_start' } - 1;
     }
 
+    print "DELETION FEATURE : " . $del_seq_start . "-" . $del_seq_end . "\n"; # TODO: remove
+    print "Base params :\n"; # TODO: remove
+    print Dumper ( $params ); # TODO: remove
+    print "RFetch params :\n"; # TODO: remove
+    print Dumper ( $rfetch_params ); # TODO: remove
+
+    ??? rfetch is an arrayref!!
+    unless ( exists $rfetch_params->{ 'include_transcript' } && $rfetch_params->{ 'include_transcript' } ) {
+        print "NEED TO FETCH TRANSCRIPT!\n"; # TODO: remove
+    }
+
     Bio::SeqUtils->cat(
         $del_seq,
         $self->rfetch_seq(
             @{ $rfetch_params },
-            'seq_region_start' => $del_seq_start,
-            'seq_region_end'   => $del_seq_end,
+            'seq_region_start'   => $del_seq_start,
+            'seq_region_end'     => $del_seq_end,
+            # 'include_transcript' => 1,
+            # 'transcript'
         ),
     );
 
     # calculate basepairs deleted
-    my $length_del_bp = $del_seq_end - $del_seq_start;
+    my $length_del_bp = ( $del_seq_end - $del_seq_start ) + 1;
     my $note          = 'deletion';
     my $del_bp        = $length_del_bp . 'bp';
 
@@ -817,9 +838,11 @@ sub _create_deleted_exons_tag {
     my $num_exons     = 0;
     my $exon_rank_min = 0;
     my $exon_rank_max = 0;
+    print "IN _create_deleted_exons_tag \n"; # TODO: remmove
 
     my @del_features  = $del_seq->get_SeqFeatures();
     foreach my $feat ( @del_features ) {
+        print "IN _create_deleted_exons_tag FEATURE PRIMARY TAG = " . $feat->primary_tag . "\n"; # TODO: remmove
         if( $feat->primary_tag eq 'exon' ) {
             $num_exons++;
             my @exon_rank_array = $feat->get_tag_values('rank');

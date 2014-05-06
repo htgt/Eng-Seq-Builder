@@ -38,6 +38,7 @@ sub vector_seq {
     if ( $design_type =~ /^Del/ ) {
         $params{insertion} = $cassette;
         $params{backbone}  = $backbone;
+        $params{ 'is_deletion' } = 1; # to mark as deletion so can add deletion feature
         return $self->deletion_vector_seq(%params);
     }
 
