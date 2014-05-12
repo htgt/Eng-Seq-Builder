@@ -22,8 +22,6 @@ use Const::Fast;
 use DBIx::Connector;
 use namespace::autoclean;
 
-use Data::Dumper; # TODO: remove
-
 const my $DEFAULT_SPECIES => 'mouse';
 
 const my %BIO_SPECIES_FOR => (
@@ -772,25 +770,12 @@ sub _add_deletion_feature {
         $del_seq_end   = $params->{ 'five_arm_start' } - 1;
     }
 
-    print "DELETION FEATURE : " . $del_seq_start . "-" . $del_seq_end . "\n"; # TODO: remove
-    print "Base params :\n"; # TODO: remove
-    print Dumper ( $params ); # TODO: remove
-    print "RFetch params :\n"; # TODO: remove
-    print Dumper ( $rfetch_params ); # TODO: remove
-
-    ??? rfetch is an arrayref!!
-    unless ( exists $rfetch_params->{ 'include_transcript' } && $rfetch_params->{ 'include_transcript' } ) {
-        print "NEED TO FETCH TRANSCRIPT!\n"; # TODO: remove
-    }
-
     Bio::SeqUtils->cat(
         $del_seq,
         $self->rfetch_seq(
             @{ $rfetch_params },
             'seq_region_start'   => $del_seq_start,
             'seq_region_end'     => $del_seq_end,
-            # 'include_transcript' => 1,
-            # 'transcript'
         ),
     );
 
@@ -799,8 +784,16 @@ sub _add_deletion_feature {
     my $note          = 'deletion';
     my $del_bp        = $length_del_bp . 'bp';
 
-    # add deleted exons to note
-    my $del_exons = $self->_create_deleted_exons_tag( $del_seq );
+    # created deleted exons string to add to feature note
+    my $del_exons;
+    my %rfetchHash = @{ $rfetch_params };
+    if ( exists $rfetchHash{ 'include_transcript' } && $rfetchHash{ 'include_transcript' } ) {
+        $del_exons = $self->_create_deleted_exons_tag( $del_seq );
+    }
+    else {
+        # no transcript so exons unknown
+        $del_exons = " ";
+    }
     
     # identify the location of the deletion at the end of the synthetic cassette
     my @seq_features  = $seq->get_SeqFeatures();
@@ -838,11 +831,9 @@ sub _create_deleted_exons_tag {
     my $num_exons     = 0;
     my $exon_rank_min = 0;
     my $exon_rank_max = 0;
-    print "IN _create_deleted_exons_tag \n"; # TODO: remmove
 
     my @del_features  = $del_seq->get_SeqFeatures();
     foreach my $feat ( @del_features ) {
-        print "IN _create_deleted_exons_tag FEATURE PRIMARY TAG = " . $feat->primary_tag . "\n"; # TODO: remmove
         if( $feat->primary_tag eq 'exon' ) {
             $num_exons++;
             my @exon_rank_array = $feat->get_tag_values('rank');
@@ -1118,6 +1109,11 @@ sub _get_seq_annotations {
     if ( $params->{backbone} ) {
         my $backbone = Bio::Annotation::Comment->new( -text => 'backbone: ' . $params->{ backbone }->{ name } );
         $annotation_collection->add_Annotation( 'comment', $backbone );
+    }
+
+    if ( $params->{ transcript } ) {
+        my $transcript = Bio::Annotation::Comment->new( -text => 'transcript_id: ' . $params->{ transcript } );
+        $annotation_collection->add_Annotation( 'comment', $transcript );
     }
 
     return $annotation_collection;
