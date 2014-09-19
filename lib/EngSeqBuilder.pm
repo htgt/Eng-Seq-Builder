@@ -48,7 +48,7 @@ const my %BIO_SPECIES_FOR => (
 
 const my %ASSEMBLY_FOR => (
     mouse => 'GRCm38',
-    human => 'GRCh37'
+    human => 'GRCh38'
 );
 
 class_has parameter_types => (
