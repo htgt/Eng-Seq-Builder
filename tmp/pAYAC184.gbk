@@ -1,0 +1,92 @@
+LOCUS       pACYC184                1934 bp    dna     linear   UNK 
+ACCESSION   unknown
+KEYWORDS    .
+REFERENCE   1  (bases 1 to 4245)
+  AUTHORS   New England Biolabs.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (19-OCT-2007) Research Department, New England Biolabs,
+            240 County Road, Ipswich, MA 01938, USA
+REFERENCE   2  (bases 1 to 4245)
+  AUTHORS   New England Biolabs.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (19-OCT-2007) Research Department, New England Biolabs,
+            240 County Road, Ipswich, MA 01938, USA
+COMMENT     Corrects sequence error in tet gene deriving from the original
+            pSC101 sequence, present in GenBank entry (see accession X06403)
+            and NEB sequences dated 6/6/02 and earlier, based on sequencing of
+            pBR322 and pACYC184 at NEB in 2007 (Mathieu-Sheltry, V. and
+            Cantin, E., unpublished). Correction is C2629T, representing a
+            Thr350Ile correction in the expressed protein.
+COMMENT     Corrects sequence error in tet gene deriving from the original
+            pSC101 sequence, present in GenBank entry (see accession X06403)
+            and NEB sequences dated 6/6/02 and earlier, based on sequencing of
+            pBR322 and pACYC184 at NEB in 2007 (Mathieu-Sheltry, V. and
+            Cantin, E., unpublished). Correction is C2629T, representing a
+            Thr350Ile correction in the expressed protein.
+FEATURES             Location/Qualifiers
+     source          1..441
+                     /mol_type="other DNA"
+                     /dnas_title="pacyc184CleanwithGprimers"
+                     /organism="Cloning vector pACYC184"
+     gene            complement(1..660)
+                     /gene="cat"
+     CDS             complement(1..660)
+                     /codon_start=1
+                     /gene="cat"
+                     /translation="MEKKITGYTTVDISQWHRKEHFEAFQSVAQCTYNQTVQLDITAF
+                     LKTVKKNKHKFYPAFIHILARLMNAHPEFRMAMKDGELVIWDSVHPCYTVFHEQTETF
+                     SSLWSEYHDDFRQFLHIYSQDVACYGENLAYFPKGFIENMFFVSANPWVSFTSFDLNV
+                     ANMDNFFAPVFTMGKYYTQGDKVLMPLAIQVHHAVCDGFHVGRMLNELQQYCDEWQGG
+                     A"
+                     /product="chloramphenicol acetyltransferase"
+                     /note="camR (confers resistance to chloramphenicol)"
+     misc_feature    1..21
+                     /note="3' Gap primer"
+     source          442..>1934
+                     /mol_type="other DNA"
+                     /dnas_title="pacyc184CleanwithGprimers"
+                     /organism="Cloning vector pACYC184"
+     -10_signal      complement(727..732)
+                     /note="cat promoter (counter-clockwise); CATATT"
+     -35_signal      complement(750..755)
+                     /note="cat promoter (counter-clockwise); ACGTAA"
+     rep_origin      complement(1289..1834)
+                     /note="p15A origin of replication (clockwise) (RNAII -35
+                     to RNA/DNA switch point)"
+     misc_feature    complement(1914..1934)
+                     /note="5' Gap primer"
+ORIGIN      
+        1 ttacgccccg ccctgccact catcgcagta ctgttgtaat tcattaagca ttctgccgac
+       61 atggaagcca tcacagacgg catgatgaac ctgaatcgcc agcggcatca gcaccttgtc
+      121 gccttgcgta taatatttgc ccatggtgaa aacgggggcg aagaagttgt ccatattggc
+      181 cacgtttaaa tcaaaactgg tgaaactcac ccagggattg gctgagacga aaaacatatt
+      241 ctcaataaac cctttaggga aataggccag gttttcaccg taacacgcca catcttgcga
+      301 atatatgtgt agaaactgcc ggaaatcgtc gtggtattca ctccagagcg atgaaaacgt
+      361 ttcagtttgc tcatggaaaa cggtgtaaca agggtgaaca ctatcccata tcaccagctc
+      421 accgtctttc attgccatac ggaattccgg atgagcattc atcaggcggg caagaatgtg
+      481 aataaaggcc ggataaaact tgtgcttatt tttctttacg gtctttaaaa aggccgtaat
+      541 atccagctga acggtctggt tataggtaca ttgagcaact gactgaaatg cctcaaaatg
+      601 ttctttacga tgccattggg atatatcaac ggtggtatat ccagtgattt ttttctccat
+      661 tttagcttcc ttagctcctg aaaatctcga taactcaaaa aatacgcccg gtagtgatct
+      721 tatttcatta tggtgaaagt tggaacctct tacgtgccga tcaacgtctc attttcgcca
+      781 aaagttggcc cagggcttcc cggtatcaac agggacacca ggatttattt attctgcgaa
+      841 gtgatcttcc gtcacaggta tttattcggc gcaaagtgcg tcgggtgatg ctgccaactt
+      901 actgatttag tgtatgatgg tgtttttgag gtgctccagt ggcttctgtt tctatcagct
+      961 gtccctcctg ttcagctact gacggggtgg tgcgtaacgg caaaagcacc gccggacatc
+     1021 agcgctagcg gagtgtatac tggcttacta tgttggcact gatgagggtg tcagtgaagt
+     1081 gcttcatgtg gcaggagaaa aaaggctgca ccggtgcgtc agcagaatat gtgatacagg
+     1141 atatattccg cttcctcgct cactgactcg ctacgctcgg tcgttcgact gcggcgagcg
+     1201 gaaatggctt acgaacgggg cggagatttc ctggaagatg ccaggaagat acttaacagg
+     1261 gaagtgagag ggccgcggca aagccgtttt tccataggct ccgcccccct gacaagcatc
+     1321 acgaaatctg acgctcaaat cagtggtggc gaaacccgac aggactataa agataccagg
+     1381 cgtttccccc tggcggctcc ctcgtgcgct ctcctgttcc tgcctttcgg tttaccggtg
+     1441 tcattccgct gttatggccg cgtttgtctc attccacgcc tgacactcag ttccgggtag
+     1501 gcagttcgct ccaagctgga ctgtatgcac gaaccccccg ttcagtccga ccgctgcgcc
+     1561 ttatccggta actatcgtct tgagtccaac ccggaaagac atgcaaaagc accactggca
+     1621 gcagccactg gtaattgatt tagaggagtt agtcttgaag tcatgcgccg gttaaggcta
+     1681 aactgaaagg acaagttttg gtgactgcgc tcctccaagc cagttacctc ggttcaaaga
+     1741 gttggtagct cagagaacct tcgaaaaacc gccctgcaag gcggtttttt cgttttcaga
+     1801 gcaagagatt acgcgcagac caaaacgatc tcaagaagat catcttatta atcagataaa
+     1861 atatttctag atttcagtgc aatttatctc ttcaaatgta gcacctgaag tcagccccat
+     1921 acgatataag ttgt
+//

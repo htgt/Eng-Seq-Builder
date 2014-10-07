@@ -1,0 +1,88 @@
+LOCUS       p1260                   2343 bp    dna     linear   UNK 
+ACCESSION   unknown
+KEYWORDS    .
+FEATURES             Location/Qualifiers
+     source          join(<1..<1,292..1996)
+                     /mol_type="other DNA"
+                     /dnas_title="p1260 GERETY T7 gRNA vector BSAI"
+                     /organism="pDONR201"
+     gene            394..1203
+                     /gene="KanR2"
+                     /dnas_title="KanR2"
+                     /label=KanR2
+     rep_origin      1330..1949
+                     /label=pBR322_origin
+     misc_feature    78..83
+                     /note="DraI for digest and transcription"
+     misc_feature    complement(121..141)
+                     /note="141 (Sebastian's custom reverse primer)"
+     polyA_signal    84..260
+                     /note="STUFFER SEQUENCE (SV40 PolyA)"
+     misc_feature    1..80
+                     /note="gRNA backbone"
+     misc_feature    1..4
+                     /note="5' Overhang after BSAI digest"
+     misc_feature    77..80
+                     /note="final TTTT present at end of gRNA"
+     misc_feature    complement(261..280)
+                     /note="SP6 for sequencing into gRNA"
+     source          join(1997..2306,2343..2343)
+                     /mol_type="other DNA"
+                     /dnas_title="p1260 GERETY T7 gRNA vector BSAI"
+                     /organism="pDONR201"
+     terminator      complement(2069..2096)
+                     /label=rrnB_T2_terminator
+     terminator      complement(2228..2271)
+                     /label=rrnB_T1_terminator
+     misc_feature    2326..2343
+                     /note="T7 promoter"
+     misc_feature    2343..2343
+                     /note="Obligate G for T7 transcription"
+     misc_feature    2343..2343
+                     /note="First transcribed base"
+     misc_feature    2340..2343
+                     /note="5' Overhang (underhang) after BSAI digest"
+     misc_feature    2079..2110
+                     /note="T7gRNA_F"
+ORIGIN      
+        1 gttttagagc tagaaatagc aagttaaaat aaggctagtc cgttatcaac ttgaaaaagt
+       61 ggcaccgagt cggtgctttt aaagtagatc cagacatgat aagatacatt gatgagtttg
+      121 gacaaaccac aactagaatg cagtgaaaaa aatgctttat ttgtgaaatt tgtgatgcta
+      181 ttgctttatt tgtaaccatt ataagctgca ataaacaagt taacaacaac aattgcattc
+      241 attttatgtt tcaggttcag ttctatagtg tcacctaaat tgcagctctg gcccgtgtct
+      301 caaaatctct gatgttacat tgcacaagat aaaaatatat catcatgaac aataaaactg
+      361 tctgcttaca taaacagtaa tacaaggggt gttatgagcc atattcaacg ggaaacgtcg
+      421 aggccgcgat taaattccaa catggatgct gatttatatg ggtataaatg ggctcgcgat
+      481 aatgtcgggc aatcaggtgc gacaatctat cgcttgtatg ggaagcccga tgcgccagag
+      541 ttgtttctga aacatggcaa aggtagcgtt gccaatgatg ttacagatga gatggtcaga
+      601 ctaaactggc tgacggaatt tatgcctctt ccgaccatca agcattttat ccgtactcct
+      661 gatgatgcat ggttactcac cactgcgatc cccggaaaaa cagcattcca ggtattagaa
+      721 gaatatcctg attcaggtga aaatattgtt gatgcgctgg cagtgttcct gcgccggttg
+      781 cattcgattc ctgtttgtaa ttgtcctttt aacagcgatc gcgtatttcg tctcgctcag
+      841 gcgcaatcac gaatgaataa cggtttggtt gatgcgagtg attttgatga cgagcgtaat
+      901 ggctggcctg ttgaacaagt ctggaaagaa atgcataaac ttttgccatt ctcaccggat
+      961 tcagtcgtca ctcatggtga tttctcactt gataacctta tttttgacga ggggaaatta
+     1021 ataggttgta ttgatgttgg acgagtcgga atcgcagacc gataccagga tcttgccatc
+     1081 ctatggaact gcctcggtga gttttctcct tcattacaga aacggctttt tcaaaaatat
+     1141 ggtattgata atcctgatat gaataaattg cagtttcatt tgatgctcga tgagtttttc
+     1201 taatcagaat tggttaattg gttgtaacac tggcagagca ttacgctgac ttgacgggac
+     1261 ggcgcaagct catgaccaaa atcccttaac gtgagttttc gttccactga gcgtcagacc
+     1321 ccgtagaaaa gatcaaagga tcttcttgag atcctttttt tctgcgcgta atctgctgct
+     1381 tgcaaacaaa aaaaccaccg ctaccagcgg tggtttgttt gccggatcaa gagctaccaa
+     1441 ctctttttcc gaaggtaact ggcttcagca gagcgcagat accaaatact gtccttctag
+     1501 tgtagccgta gttaggccac cacttcaaga actctgtagc accgcctaca tacctcgctc
+     1561 tgctaatcct gttaccagtg gctgctgcca gtggcgataa gtcgtgtctt accgggttgg
+     1621 actcaagacg atagttaccg gataaggcgc agcggtcggg ctgaacgggg ggttcgtgca
+     1681 cacagcccag cttggagcga acgacctaca ccgaactgag atacctacag cgtgagctat
+     1741 gagaaagcgc cacgcttccc gaagggagaa aggcggacag gtatccggta agcggcaggg
+     1801 tcggaacagg agagcgcacg agggagcttc cagggggaaa cgcctggtat ctttatagtc
+     1861 ctgtcgggtt tcgccacctc tgacttgagc gtcgattttt gtgatgctcg tcaggggggc
+     1921 ggagcctatg gaaaaacgcc agcaacgcgg cctttttacg gttcctggcc ttttgctggc
+     1981 cttttgctca catgttcttt cctgcgttat cccctgattc tgtggataac cgtattaccg
+     2041 ctagccagga agagtttgta gaaacgcaaa aaggccatcc gtcaggatgg ccttctgctt
+     2101 agtttgatgc ctggcagttt atggcgggcg tcctgcccgc caccctccgg gccgttgctt
+     2161 cacaacgttc aaatccgctc ccggcggatt tgtcctactc aggagagcgt tcaccgacaa
+     2221 acaacagata aaacgaaagg cccagtcttc cgactgagcc tttcgtttta tttgatgcct
+     2281 ggcagttccc tactctcgcg ttaacgctag catggatctc gggcctaata cgactcacta
+     2341 tag
+//

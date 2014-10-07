@@ -1,0 +1,60 @@
+LOCUS       SYNPUC19CV              2686 bp    DNA     circular SYN 22-MAY-2002
+FEATURES             Location/Qualifiers
+     misc_feature    261..280
+                     /note="puc19seqF"
+     misc_feature    complement(526..546)
+                     /note="puc19seqR"
+     misc_feature    383..404
+                     /note="GIBSON append"
+     misc_feature    419..440
+                     /note="GIBSON append"
+     source          1..2661
+                     /dnas_title="puc19_RV_GIBSONvector"
+ORIGIN      
+        1 tcgcgcgttt cggtgatgac ggtgaaaacc tctgacacat gcagctcccg gagacggtca
+       61 cagcttgtct gtaagcggat gccgggagca gacaagcccg tcagggcgcg tcagcgggtg
+      121 ttggcgggtg tcggggctgg cttaactatg cggcatcaga gcagattgta ctgagagtgc
+      181 accatatgcg gtgtgaaata ccgcacagat gcgtaaggag aaaataccgc atcaggcgcc
+      241 attcgccatt caggctgcgc aactgttggg aagggcgatc ggtgcgggcc tcttcgctat
+      301 tacgccagct ggcgaaaggg ggatgtgctg caaggcgatt aagttgggta acgccagggt
+      361 tttcccagtc acgacgttgt aaaacgacgg ccagtgaatt cGATATCGGC GCGCCGATAT
+      421 Caagcttggc gtaatcatgg tcatagctgt ttcctgtgtg aaattgttat ccgctcacaa
+      481 ttccacacaa catacgagcc ggaagcataa agtgtaaagc ctggggtgcc taatgagtga
+      541 gctaactcac attaattgcg ttgcgctcac tgcccgcttt ccagtcggga aacctgtcgt
+      601 gccagctgca ttaatgaatc ggccaacgcg cggggagagg cggtttgcgt attgggcgct
+      661 cttccgcttc ctcgctcact gactcgctgc gctcggtcgt tcggctgcgg cgagcggtat
+      721 cagctcactc aaaggcggta atacggttat ccacagaatc aggggataac gcaggaaaga
+      781 acatgtgagc aaaaggccag caaaaggcca ggaaccgtaa aaaggccgcg ttgctggcgt
+      841 ttttccatag gctccgcccc cctgacgagc atcacaaaaa tcgacgctca agtcagaggt
+      901 ggcgaaaccc gacaggacta taaagatacc aggcgtttcc ccctggaagc tccctcgtgc
+      961 gctctcctgt tccgaccctg ccgcttaccg gatacctgtc cgcctttctc ccttcgggaa
+     1021 gcgtggcgct ttctcatagc tcacgctgta ggtatctcag ttcggtgtag gtcgttcgct
+     1081 ccaagctggg ctgtgtgcac gaaccccccg ttcagcccga ccgctgcgcc ttatccggta
+     1141 actatcgtct tgagtccaac ccggtaagac acgacttatc gccactggca gcagccactg
+     1201 gtaacaggat tagcagagcg aggtatgtag gcggtgctac agagttcttg aagtggtggc
+     1261 ctaactacgg ctacactaga agaacagtat ttggtatctg cgctctgctg aagccagtta
+     1321 ccttcggaaa aagagttggt agctcttgat ccggcaaaca aaccaccgct ggtagcggtg
+     1381 gtttttttgt ttgcaagcag cagattacgc gcagaaaaaa aggatctcaa gaagatcctt
+     1441 tgatcttttc tacggggtct gacgctcagt ggaacgaaaa ctcacgttaa gggattttgg
+     1501 tcatgagatt atcaaaaagg atcttcacct agatcctttt aaattaaaaa tgaagtttta
+     1561 aatcaatcta aagtatatat gagtaaactt ggtctgacag ttaccaatgc ttaatcagtg
+     1621 aggcacctat ctcagcgatc tgtctatttc gttcatccat agttgcctga ctccccgtcg
+     1681 tgtagataac tacgatacgg gagggcttac catctggccc cagtgctgca atgataccgc
+     1741 gagacccacg ctcaccggct ccagatttat cagcaataaa ccagccagcc ggaagggccg
+     1801 agcgcagaag tggtcctgca actttatccg cctccatcca gtctattaat tgttgccggg
+     1861 aagctagagt aagtagttcg ccagttaata gtttgcgcaa cgttgttgcc attgctacag
+     1921 gcatcgtggt gtcacgctcg tcgtttggta tggcttcatt cagctccggt tcccaacgat
+     1981 caaggcgagt tacatgatcc cccatgttgt gcaaaaaagc ggttagctcc ttcggtcctc
+     2041 cgatcgttgt cagaagtaag ttggccgcag tgttatcact catggttatg gcagcactgc
+     2101 ataattctct tactgtcatg ccatccgtaa gatgcttttc tgtgactggt gagtactcaa
+     2161 ccaagtcatt ctgagaatag tgtatgcggc gaccgagttg ctcttgcccg gcgtcaatac
+     2221 gggataatac cgcgccacat agcagaactt taaaagtgct catcattgga aaacgttctt
+     2281 cggggcgaaa actctcaagg atcttaccgc tgttgagatc cagttcgatg taacccactc
+     2341 gtgcacccaa ctgatcttca gcatctttta ctttcaccag cgtttctggg tgagcaaaaa
+     2401 caggaaggca aaatgccgca aaaaagggaa taagggcgac acggaaatgt tgaatactca
+     2461 tactcttcct ttttcaatat tattgaagca tttatcaggg ttattgtctc atgagcggat
+     2521 acatatttga atgtatttag aaaaataaac aaataggggt tccgcgcaca tttccccgaa
+     2581 aagtgccacc tgacgtctaa gaaaccatta ttatcatgac attaacctat aaaaataggc
+     2641 gtatcacgag gccctttcgt c
+//
+

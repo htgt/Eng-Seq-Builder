@@ -1,0 +1,97 @@
+LOCUS       U6                      2412 bp    dna     linear   UNK 
+ACCESSION   unknown
+KEYWORDS    .
+FEATURES             Location/Qualifiers
+     source          join(1..1,92..1799)
+                     /mol_type="other DNA"
+                     /dnas_title="U6 BsaI only T3_gRNA_L"
+                     /organism="pDONR201"
+     CDS             197..1006
+                     /gene="KanR2"
+                     /dnas_title="KanR2"
+                     /translation="MSHIQRETSRPRLNSNMDADLYGYKWARDNVGQSGATIYRLYGK
+                     PDAPELFLKHGKGSVANDVTDEMVRLNWLTEFMPLPTIKHFIRTPDDAWLLTTAIPGK
+                     TAFQVLEEYPDSGENIVDALAVFLRRLHSIPVCNCPFNSDRVFRLAQAQSRMNNGLVD
+                     ASDFDDERNGWPVEQVWKEMHKLLPFSPDSVVTHGDFSLDNLIFDEGKLIGCIDVGRV
+                     GIADRYQDLAILWNCLGEFSPSLQKRLFQKYGIDNPDMNKLQFHLMLDEFF*"
+                     /label=KanR2
+                     /note="ORF frame 3"
+     gene            197..1006
+                     /gene="KanR2"
+                     /dnas_title="KanR2"
+                     /label=KanR2
+     rep_origin      1133..1752
+                     /label=pBR322_origin
+     misc_feature    1..80
+                     /note="gRNA scafold region"
+     misc_feature    77..83
+                     /note="Termination sequence"
+     misc_feature    1..4
+                     /note="Overhang after BsaI digest"
+     misc_feature    complement(85..104)
+                     /note="gRNA_seqR1"
+     misc_feature    complement(161..180)
+                     /note="gRNA_seqR2"
+     misc_feature    1..625
+                     /note="synthetic"
+     source          join(1800..2109,>2412..>2412)
+                     /mol_type="other DNA"
+                     /dnas_title="U6 BsaI only T3_gRNA_L"
+                     /organism="pDONR201"
+     terminator      complement(1872..1899)
+                     /label=rrnB_T2_terminator
+     terminator      complement(2031..2074)
+                     /label=rrnB_T1_terminator
+     promoter        2149..2412
+                     /label=hU6_promoter
+     misc_feature    2410..2412
+                     /note="3' overhang after BsaI digest"
+     misc_feature    2129..2148
+                     /note="T3 Sequencing site (forward)"
+     misc_feature    2266..2286
+                     /note="gRNA_seqF1"
+     misc_feature    2196..2215
+                     /note="gRNA_seqF2"
+ORIGIN      
+        1 gttttagagc tagaaatagc aagttaaaat aaggctagtc cgttatcaac ttgaaaaagt
+       61 ggcaccgagt cggtgctttt ttttgcagct ctggcccgtg tctcaaaatc tctgatgtta
+      121 cattgcacaa gataaaaata tatcatcatg aacaataaaa ctgtctgctt acataaacag
+      181 taatacaagg ggtgttatga gccatattca acgggaaacg tcgaggccgc gattaaattc
+      241 caacatggat gctgatttat atgggtataa atgggctcgc gataatgtcg ggcaatcagg
+      301 tgcgacaatc tatcgcttgt atgggaagcc cgatgcgcca gagttgtttc tgaaacatgg
+      361 caaaggtagc gttgccaatg atgttacaga tgagatggtc agactaaact ggctgacgga
+      421 atttatgcct cttccgacca tcaagcattt tatccgtact cctgatgatg catggttact
+      481 caccactgcg atccccggaa aaacagcatt ccaggtatta gaagaatatc ctgattcagg
+      541 tgaaaatatt gttgatgcgc tggcagtgtt cctgcgccgg ttgcattcga ttcctgtttg
+      601 taattgtcct tttaacagcg atcgcgtatt tcgtctcgct caggcgcaat cacgaatgaa
+      661 taacggtttg gttgatgcga gtgattttga tgacgagcgt aatggctggc ctgttgaaca
+      721 agtctggaaa gaaatgcata aacttttgcc attctcaccg gattcagtcg tcactcatgg
+      781 tgatttctca cttgataacc ttatttttga cgaggggaaa ttaataggtt gtattgatgt
+      841 tggacgagtc ggaatcgcag accgatacca ggatcttgcc atcctatgga actgcctcgg
+      901 tgagttttct ccttcattac agaaacggct ttttcaaaaa tatggtattg ataatcctga
+      961 tatgaataaa ttgcagtttc atttgatgct cgatgagttt ttctaatcag aattggttaa
+     1021 ttggttgtaa cactggcaga gcattacgct gacttgacgg gacggcgcaa gctcatgacc
+     1081 aaaatccctt aacgtgagtt ttcgttccac tgagcgtcag accccgtaga aaagatcaaa
+     1141 ggatcttctt gagatccttt ttttctgcgc gtaatctgct gcttgcaaac aaaaaaacca
+     1201 ccgctaccag cggtggtttg tttgccggat caagagctac caactctttt tccgaaggta
+     1261 actggcttca gcagagcgca gataccaaat actgtccttc tagtgtagcc gtagttaggc
+     1321 caccacttca agaactctgt agcaccgcct acatacctcg ctctgctaat cctgttacca
+     1381 gtggctgctg ccagtggcga taagtcgtgt cttaccgggt tggactcaag acgatagtta
+     1441 ccggataagg cgcagcggtc gggctgaacg gggggttcgt gcacacagcc cagcttggag
+     1501 cgaacgacct acaccgaact gagataccta cagcgtgagc tatgagaaag cgccacgctt
+     1561 cccgaaggga gaaaggcgga caggtatccg gtaagcggca gggtcggaac aggagagcgc
+     1621 acgagggagc ttccaggggg aaacgcctgg tatctttata gtcctgtcgg gtttcgccac
+     1681 ctctgacttg agcgtcgatt tttgtgatgc tcgtcagggg ggcggagcct atggaaaaac
+     1741 gccagcaacg cggccttttt acggttcctg gccttttgct ggccttttgc tcacatgttc
+     1801 tttcctgcgt tatcccctga ttctgtggat aaccgtatta ccgctagcca ggaagagttt
+     1861 gtagaaacgc aaaaaggcca tccgtcagga tggccttctg cttagtttga tgcctggcag
+     1921 tttatggcgg gcgtcctgcc cgccaccctc cgggccgttg cttcacaacg ttcaaatccg
+     1981 ctcccggcgg atttgtccta ctcaggagag cgttcaccga caaacaacag ataaaacgaa
+     2041 aggcccagtc ttccgactga gcctttcgtt ttatttgatg cctggcagtt ccctactctc
+     2101 gcgttaacgc tagcatggat ctcgggccat taaccctcac taaagggaaa ggtcgggcag
+     2161 gaagagggcc tatttcccat gattccttca tatttgcata tacgatacaa ggctgttaga
+     2221 gagataatta gaattaattt gactgtaaac acaaagatat tagtacaaaa tacgtgacgt
+     2281 agaaagtaat aatttcttgg gtagtttgca gttttaaaat tatgttttaa aatggactat
+     2341 catatgctta ccgtaacttg aaagtatttc gatttcttgg ctttatatat cttgtggaaa
+     2401 ggacgaaaca cc
+//

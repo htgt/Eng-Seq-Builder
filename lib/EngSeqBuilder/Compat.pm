@@ -1,7 +1,7 @@
 package EngSeqBuilder::Compat;
 ## no critic(RequireUseStrict,RequireUseWarnings)
 {
-    $EngSeqBuilder::Compat::VERSION = '0.016';
+    $EngSeqBuilder::Compat::VERSION = '0.017';
 }
 ## use critic
 
@@ -44,6 +44,7 @@ sub vector_seq {
     if ( $design_type =~ /^Del/ ) {
         $params{insertion} = $cassette;
         $params{backbone}  = $backbone;
+        $params{ 'is_deletion' } = 1; # to mark as deletion so can add deletion feature
         return $self->deletion_vector_seq(%params);
     }
 
@@ -83,7 +84,8 @@ sub allele_seq {
     }
 
     if ( $design_type =~ /^Del/ ) {
-        $params{insertion} = $cassette;
+        $params{insertion}       = $cassette;
+        $params{ 'is_deletion' } = 1; # to mark as deletion so can add deletion feature
         return $self->deletion_allele_seq(%params);
     }
 

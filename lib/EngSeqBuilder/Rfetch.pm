@@ -1,7 +1,7 @@
 package EngSeqBuilder::Rfetch;
 ## no critic(RequireUseStrict,RequireUseWarnings)
 {
-    $EngSeqBuilder::Rfetch::VERSION = '0.016';
+    $EngSeqBuilder::Rfetch::VERSION = '0.017';
 }
 ## use critic
 

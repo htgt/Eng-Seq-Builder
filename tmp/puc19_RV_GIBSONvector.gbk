@@ -1,0 +1,63 @@
+LOCUS       puc19_RV_GIBSON             2647 bp    dna     linear   UNK 
+ACCESSION   unknown
+KEYWORDS    .
+FEATURES             Location/Qualifiers
+     misc_feature    complement(108..128)
+                     /note="puc19seqR"
+     misc_feature    1..22
+                     /note="GIBSON append"
+     source          1..2243
+                     /dnas_title="puc19_RV_GIBSONvector"
+     misc_feature    2504..2523
+                     /note="puc19seqF"
+     misc_feature    2626..2647
+                     /note="GIBSON append"
+     source          1..2647
+                     /dnas_title="puc19_RV_GIBSONvector"
+ORIGIN      
+        1 atcaagcttg gcgtaatcat ggtcatagct gtttcctgtg tgaaattgtt atccgctcac
+       61 aattccacac aacatacgag ccggaagcat aaagtgtaaa gcctggggtg cctaatgagt
+      121 gagctaactc acattaattg cgttgcgctc actgcccgct ttccagtcgg gaaacctgtc
+      181 gtgccagctg cattaatgaa tcggccaacg cgcggggaga ggcggtttgc gtattgggcg
+      241 ctcttccgct tcctcgctca ctgactcgct gcgctcggtc gttcggctgc ggcgagcggt
+      301 atcagctcac tcaaaggcgg taatacggtt atccacagaa tcaggggata acgcaggaaa
+      361 gaacatgtga gcaaaaggcc agcaaaaggc caggaaccgt aaaaaggccg cgttgctggc
+      421 gtttttccat aggctccgcc cccctgacga gcatcacaaa aatcgacgct caagtcagag
+      481 gtggcgaaac ccgacaggac tataaagata ccaggcgttt ccccctggaa gctccctcgt
+      541 gcgctctcct gttccgaccc tgccgcttac cggatacctg tccgcctttc tcccttcggg
+      601 aagcgtggcg ctttctcata gctcacgctg taggtatctc agttcggtgt aggtcgttcg
+      661 ctccaagctg ggctgtgtgc acgaaccccc cgttcagccc gaccgctgcg ccttatccgg
+      721 taactatcgt cttgagtcca acccggtaag acacgactta tcgccactgg cagcagccac
+      781 tggtaacagg attagcagag cgaggtatgt aggcggtgct acagagttct tgaagtggtg
+      841 gcctaactac ggctacacta gaagaacagt atttggtatc tgcgctctgc tgaagccagt
+      901 taccttcgga aaaagagttg gtagctcttg atccggcaaa caaaccaccg ctggtagcgg
+      961 tggttttttt gtttgcaagc agcagattac gcgcagaaaa aaaggatctc aagaagatcc
+     1021 tttgatcttt tctacggggt ctgacgctca gtggaacgaa aactcacgtt aagggatttt
+     1081 ggtcatgaga ttatcaaaaa ggatcttcac ctagatcctt ttaaattaaa aatgaagttt
+     1141 taaatcaatc taaagtatat atgagtaaac ttggtctgac agttaccaat gcttaatcag
+     1201 tgaggcacct atctcagcga tctgtctatt tcgttcatcc atagttgcct gactccccgt
+     1261 cgtgtagata actacgatac gggagggctt accatctggc cccagtgctg caatgatacc
+     1321 gcgagaccca cgctcaccgg ctccagattt atcagcaata aaccagccag ccggaagggc
+     1381 cgagcgcaga agtggtcctg caactttatc cgcctccatc cagtctatta attgttgccg
+     1441 ggaagctaga gtaagtagtt cgccagttaa tagtttgcgc aacgttgttg ccattgctac
+     1501 aggcatcgtg gtgtcacgct cgtcgtttgg tatggcttca ttcagctccg gttcccaacg
+     1561 atcaaggcga gttacatgat cccccatgtt gtgcaaaaaa gcggttagct ccttcggtcc
+     1621 tccgatcgtt gtcagaagta agttggccgc agtgttatca ctcatggtta tggcagcact
+     1681 gcataattct cttactgtca tgccatccgt aagatgcttt tctgtgactg gtgagtactc
+     1741 aaccaagtca ttctgagaat agtgtatgcg gcgaccgagt tgctcttgcc cggcgtcaat
+     1801 acgggataat accgcgccac atagcagaac tttaaaagtg ctcatcattg gaaaacgttc
+     1861 ttcggggcga aaactctcaa ggatcttacc gctgttgaga tccagttcga tgtaacccac
+     1921 tcgtgcaccc aactgatctt cagcatcttt tactttcacc agcgtttctg ggtgagcaaa
+     1981 aacaggaagg caaaatgccg caaaaaaggg aataagggcg acacggaaat gttgaatact
+     2041 catactcttc ctttttcaat attattgaag catttatcag ggttattgtc tcatgagcgg
+     2101 atacatattt gaatgtattt agaaaaataa acaaataggg gttccgcgca catttccccg
+     2161 aaaagtgcca cctgacgtct aagaaaccat tattatcatg acattaacct ataaaaatag
+     2221 gcgtatcacg aggccctttc gtctcgcgcg tttcggtgat gacggtgaaa acctctgaca
+     2281 catgcagctc ccggagacgg tcacagcttg tctgtaagcg gatgccggga gcagacaagc
+     2341 ccgtcagggc gcgtcagcgg gtgttggcgg gtgtcggggc tggcttaact atgcggcatc
+     2401 agagcagatt gtactgagag tgcaccatat gcggtgtgaa ataccgcaca gatgcgtaag
+     2461 gagaaaatac cgcatcaggc gccattcgcc attcaggctg cgcaactgtt gggaagggcg
+     2521 atcggtgcgg gcctcttcgc tattacgcca gctggcgaaa gggggatgtg ctgcaaggcg
+     2581 attaagttgg gtaacgccag ggttttccca gtcacgacgt tgtaaaacga cggccagtga
+     2641 attcgat
+//

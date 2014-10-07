@@ -1,0 +1,98 @@
+LOCUS       U6                      2452 bp    dna     linear   UNK 
+ACCESSION   unknown
+KEYWORDS    .
+FEATURES             Location/Qualifiers
+     source          join(<1..<1,>20..>20)
+                     /mol_type="other DNA"
+                     /dnas_title="U6 BsaI gRNA CRISPR_1 A01"
+                     /organism="pDONR201"
+     misc_feature    1..1
+                     /note="Obligate G, and first transcribed base comes from
+                     appending"
+     misc_feature    <1..1
+                     /note="3' overhang after BsaI digest"
+     misc_feature    1..20
+                     /note="A01gRNA"
+     source          join(21..21,132..1839)
+                     /mol_type="other DNA"
+                     /dnas_title="U6 BsaI gRNA CRISPR_1 A01"
+                     /organism="pDONR201"
+     CDS             237..1046
+                     /gene="KanR2"
+                     /dnas_title="KanR2"
+                     /translation="MSHIQRETSRPRLNSNMDADLYGYKWARDNVGQSGATIYRLYGK
+                     PDAPELFLKHGKGSVANDVTDEMVRLNWLTEFMPLPTIKHFIRTPDDAWLLTTAIPGK
+                     TAFQVLEEYPDSGENIVDALAVFLRRLHSIPVCNCPFNSDRVFRLAQAQSRMNNGLVD
+                     ASDFDDERNGWPVEQVWKEMHKLLPFSPDSVVTHGDFSLDNLIFDEGKLIGCIDVGRV
+                     GIADRYQDLAILWNCLGEFSPSLQKRLFQKYGIDNPDMNKLQFHLMLDEFF*"
+                     /label=KanR2
+                     /note="ORF frame 3"
+     gene            237..1046
+                     /gene="KanR2"
+                     /dnas_title="KanR2"
+                     /label=KanR2
+     rep_origin      1173..1792
+                     /label=pBR322_origin
+     misc_feature    97..103
+                     /note="Termination sequence"
+     misc_feature    complement(104..123)
+                     /note="SP6 sequencing site (reverse)"
+     misc_feature    21..96
+                     /note="gRNA scaffold region"
+     source          join(1840..2149,2452..2452)
+                     /mol_type="other DNA"
+                     /dnas_title="U6 BsaI gRNA CRISPR_1 A01"
+                     /organism="pDONR201"
+     terminator      complement(1912..1939)
+                     /label=rrnB_T2_terminator
+     terminator      complement(2071..2114)
+                     /label=rrnB_T1_terminator
+     promoter        2189..2452
+                     /label=hU6_promoter
+     misc_feature    2450..2452
+                     /note="3' overhang after BsaI digest"
+     misc_feature    2169..2188
+                     /note="T3 Sequencing site (forward)"
+ORIGIN      
+        1 ggggatatcg gccccaagtt gttttagagc tagaaatagc aagttaaaat aaggctagtc
+       61 cgttatcaac ttgaaaaagt ggcaccgagt cggtgctttt tttttctata gtgtcaccta
+      121 aattgcagct ctggcccgtg tctcaaaatc tctgatgtta cattgcacaa gataaaaata
+      181 tatcatcatg aacaataaaa ctgtctgctt acataaacag taatacaagg ggtgttatga
+      241 gccatattca acgggaaacg tcgaggccgc gattaaattc caacatggat gctgatttat
+      301 atgggtataa atgggctcgc gataatgtcg ggcaatcagg tgcgacaatc tatcgcttgt
+      361 atgggaagcc cgatgcgcca gagttgtttc tgaaacatgg caaaggtagc gttgccaatg
+      421 atgttacaga tgagatggtc agactaaact ggctgacgga atttatgcct cttccgacca
+      481 tcaagcattt tatccgtact cctgatgatg catggttact caccactgcg atccccggaa
+      541 aaacagcatt ccaggtatta gaagaatatc ctgattcagg tgaaaatatt gttgatgcgc
+      601 tggcagtgtt cctgcgccgg ttgcattcga ttcctgtttg taattgtcct tttaacagcg
+      661 atcgcgtatt tcgtctcgct caggcgcaat cacgaatgaa taacggtttg gttgatgcga
+      721 gtgattttga tgacgagcgt aatggctggc ctgttgaaca agtctggaaa gaaatgcata
+      781 aacttttgcc attctcaccg gattcagtcg tcactcatgg tgatttctca cttgataacc
+      841 ttatttttga cgaggggaaa ttaataggtt gtattgatgt tggacgagtc ggaatcgcag
+      901 accgatacca ggatcttgcc atcctatgga actgcctcgg tgagttttct ccttcattac
+      961 agaaacggct ttttcaaaaa tatggtattg ataatcctga tatgaataaa ttgcagtttc
+     1021 atttgatgct cgatgagttt ttctaatcag aattggttaa ttggttgtaa cactggcaga
+     1081 gcattacgct gacttgacgg gacggcgcaa gctcatgacc aaaatccctt aacgtgagtt
+     1141 ttcgttccac tgagcgtcag accccgtaga aaagatcaaa ggatcttctt gagatccttt
+     1201 ttttctgcgc gtaatctgct gcttgcaaac aaaaaaacca ccgctaccag cggtggtttg
+     1261 tttgccggat caagagctac caactctttt tccgaaggta actggcttca gcagagcgca
+     1321 gataccaaat actgtccttc tagtgtagcc gtagttaggc caccacttca agaactctgt
+     1381 agcaccgcct acatacctcg ctctgctaat cctgttacca gtggctgctg ccagtggcga
+     1441 taagtcgtgt cttaccgggt tggactcaag acgatagtta ccggataagg cgcagcggtc
+     1501 gggctgaacg gggggttcgt gcacacagcc cagcttggag cgaacgacct acaccgaact
+     1561 gagataccta cagcgtgagc tatgagaaag cgccacgctt cccgaaggga gaaaggcgga
+     1621 caggtatccg gtaagcggca gggtcggaac aggagagcgc acgagggagc ttccaggggg
+     1681 aaacgcctgg tatctttata gtcctgtcgg gtttcgccac ctctgacttg agcgtcgatt
+     1741 tttgtgatgc tcgtcagggg ggcggagcct atggaaaaac gccagcaacg cggccttttt
+     1801 acggttcctg gccttttgct ggccttttgc tcacatgttc tttcctgcgt tatcccctga
+     1861 ttctgtggat aaccgtatta ccgctagcca ggaagagttt gtagaaacgc aaaaaggcca
+     1921 tccgtcagga tggccttctg cttagtttga tgcctggcag tttatggcgg gcgtcctgcc
+     1981 cgccaccctc cgggccgttg cttcacaacg ttcaaatccg ctcccggcgg atttgtccta
+     2041 ctcaggagag cgttcaccga caaacaacag ataaaacgaa aggcccagtc ttccgactga
+     2101 gcctttcgtt ttatttgatg cctggcagtt ccctactctc gcgttaacgc tagcatggat
+     2161 ctcgggccat taaccctcac taaagggaaa ggtcgggcag gaagagggcc tatttcccat
+     2221 gattccttca tatttgcata tacgatacaa ggctgttaga gagataatta gaattaattt
+     2281 gactgtaaac acaaagatat tagtacaaaa tacgtgacgt agaaagtaat aatttcttgg
+     2341 gtagtttgca gttttaaaat tatgttttaa aatggactat catatgctta ccgtaacttg
+     2401 aaagtatttc gatttcttgg ctttatatat cttgtggaaa ggacgaaaca cc
+//
