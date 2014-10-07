@@ -794,14 +794,14 @@ sub _add_deletion_feature {
         # no transcript so exons unknown
         $del_exons = " ";
     }
-    
+
     # identify the location of the deletion at the end of the synthetic cassette
     my @seq_features  = $seq->get_SeqFeatures();
     my $synth_cassette_end = 0;
     foreach my $seq_feat ( @seq_features ) {
         if ( $seq_feat->primary_tag eq 'misc_feature' ) {
             my @note_array = $seq_feat->get_tag_values('note');
-            if ( scalar @note_array > 0 && $note_array[0] eq 'Synthetic Cassette' ) {            
+            if ( scalar @note_array > 0 && $note_array[0] eq 'Synthetic Cassette' ) {
                 $synth_cassette_end = $seq_feat->end;
                 last;
             }
@@ -820,7 +820,7 @@ sub _add_deletion_feature {
         -end         => $synth_cassette_end + 1,
     );
     $seq->add_SeqFeature( $deletion_feat );
-    
+
     return;
 }
 

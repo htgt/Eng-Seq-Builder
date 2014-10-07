@@ -64,6 +64,7 @@ sub genbank_for_well {
 
     my $seq_io = Bio::SeqIO->new( -fh => $fh, -format => $format || 'genbank' );
     $seq_io->write_seq( $seq );
+    return;
 }
 
 sub genbank_for_plate {
@@ -78,6 +79,7 @@ sub genbank_for_plate {
         $params->{well_id} = $well->id;
         genbank_for_well( $params, $file->openw );
     }
+    return;
 }
 
 __END__
