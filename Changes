@@ -1,5 +1,9 @@
 {{$NEXT}}
 
+0.017     2014-10-07 09:34:54 Europe/London
+
+    New default human assembly: GRCh38
+
 0.016     2014-02-24 09:14:52 Europe/London
 	Modified Targeted Trap code to not include Critical and LoxP regions when they aren't present.
 
